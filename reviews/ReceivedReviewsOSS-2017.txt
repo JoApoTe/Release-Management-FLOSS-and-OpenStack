@@ -1,0 +1,134 @@
+Congratulations!
+ 
+It is our pleasure to inform you that you paper Release early, release often and release on time.  An empirical case study of release management. has been accepted for publication at OSS´2017. We will soon send more details about the final submission process.
+
+Overall, from the 32 submissions, 11 have been accepted and 5 more have been accepted conditionally.
+
+The reviews of your paper are enclosed. Please make sure to take into account reviewers comments (in addition to carefully proof-reading it for typos and other minor problems).
+
+Your paper submission and acceptance implies that one of the paper's authors must register and present the paper at the conference. Failure to attend the meeting to present the paper will result in the removal of your paper from the proceedings. The registration deadline for at least one of the authors is April 1st 2017.
+
+We look forward to seeing you at ICSE 2017 in Buenos Aires, Argentina!
+OSS´2017 PC Chairs
+
+
+----------------------- REVIEW 1 ---------------------
+PAPER: 32
+TITLE: Release early, release often and release on time.  An empirical case study of release management.
+AUTHORS: Jose Teixeira
+
+Overall evaluation: 1
+
+----------- Overall evaluation -----------
+The paper explains how release management works in the OpenStack ecosystem. The work is based on empirical evaluation of various websites, blogs, and other sources of information, and the outcome nicely communicates the challenges of release management in a setting as complex as OpenStack. The collection of empirical material has clearly being excessive, and, having used OpenStack myself, I can easily appreciate the effort of the author.
+
+What I was found missing is the description of the community structures that govern the operation.
+
+
+Clearly, a community structure is imagined by the authors, as role names are used when describing the operation, but the overall structure of the community and its government are not presented. That makes the paper somewhat subjective at times, as it is not clear who is responsible for what. That also means that the special challenges of release management in open source are not highlighted in comparison to those that are always present when releasing software.
+
+There are numerous grammatical issues in the paper, and, if accepted, I propose that the author invests in external proof-reading help to create the camera ready paper.
+
+
+----------------------- REVIEW 2 ---------------------
+PAPER: 32
+TITLE: Release early, release often and release on time.  An empirical case study of release management.
+AUTHORS: Jose Teixeira
+
+Overall evaluation: 1
+
+----------- Overall evaluation -----------
+First, there is a "d" missing in "Eric Raymon". <! RA fixed for CR OSS 2017> 
+
+The article is exclusively focussed on the release management process for the open source OpenStack project, and how it shiffted from irregular release cycles to a more rigorous, time-boxed, release cycle, in the context of a project whose complexity grew up very quickly.
+
+From my point of view, I found two major frustrations when reading the paper:
+
+- No comparison is made with existing open source projects, for instance Eclipse or Ubuntu, whose time-boxed release processes are also quite involved and have been established for a very long time (more than 10 years for both).
+
+- No real comparison is made between the approach (multi-repository) chosen by OpenStack vs. either "traditional open source projects" if we are to believe their claim, or the "monorepo" approach which is preferred internally by companies like Facebook or Google, according to [1] and [2].
+
+Note also in this context that the assertion: "While open source software projects are traditionally hosted within a single repository" is highly unfounded, as numerous counterexamples exist (Eclipse, Plone, Invenio, Nuxeo...). <! RA fixed for CR OSS 2017>
+
+[1]: http://cacm.acm.org/magazines/2016/7/204032-why-google-stores-billions-of-lines-of-code-in-a-single-repository/fulltext
+[2]: https://code.facebook.com/posts/218678814984400/scaling-mercurial-at-facebook/
+
+Overall, while I found the discussion interesting, I found the lack of comparison with other practices - and discussion of the various pro and cons of the different approaches -, makes the article much less useful for a practitioner than it could be.
+
+If the paper is accepted, I strongly recommend that the title be changed to mention somehow that it's based (and only based) on the OpenStack case.
+
+
+----------------------- REVIEW 3 ---------------------
+PAPER: 32
+TITLE: Release early, release often and release on time.  An empirical case study of release management.
+AUTHORS: Jose Teixeira
+
+Overall evaluation: 2
+
+----------- Overall evaluation -----------
+This is quite a nice paper that characterizes various strategies for project release, and gives a good description of the release process used for OpenStack. The work is preliminary, so the authors have not stated any broad conclusions, but rather just summarized the OpenStack process.
+
+I would have liked to see them describe, even briefly, the release strategies for several other well-known projects. Ubuntu, for example, is on a six-month release cycle, though many of the projects that ship with Ubuntu, use their own schedule for updates, which can easily be installed using the "software update" feature of Ubuntu.  Ubuntu also designates every fourth release, April in even-numbered years, as long-term support releases, which serve as the basis for those users who want a more-stable environment. Eclipse, by contrast, uses a "big bang" approach, where all of the subprojects are organized so that all of the updates are delivered at once annually. Drupal has no fixed release schedule, following the traditional "it's done when it's done" philosophy, but releasing a continuous series of "versions" to address bugs, security issues, or other problems found and fixed by the community. Drupal has delivered 54 updates to version 7, about 1 a month, even though versio!
+ n 8 has been available for some time and is being similarly updated.  Even these brief descriptions would help to show some of the optional strategies.  It should also be noted that the default for release for many projects is to make a "nightly build" available along with a previous "stable build".
+
+I understood the author's point about who can commit code to proprietary software, though it could be phrased better. I would note that there are many "single vendor" open source projects where the vendor limits committers to those who are employed by the vendor. In many of those cases, the world at large does not get to see nightly builds, but only the "finished" product for each release.
+
+A couple of minor fixes: the first line of the abstract misspells Eric Raymond's name, as does the first line of the introduction. The quality of writing is mostly OK. In line 3 of the Introduction, the word "been" should be added to make "has been acknowledged" <RA fixed>
+
+
+----------------------- REVIEW 4 ---------------------
+PAPER: 32
+TITLE: Release early, release often and release on time.  An empirical case study of release management.
+AUTHORS: Jose Teixeira
+
+Overall evaluation: -1
+
+----------- Overall evaluation -----------
+The paper reports the release strategy implemented at OpenStack as an example of  hybrid strategy based both on time-base and feature-base release.
+The goal of the paper is too increase the understanding of release management within complex open source software ecosystems.
+
+1. The paper is interesting as it targets a relevant topic for the OSS research community, but I personally think that the contribution of this paper is not completely new. 
+
+For example, in the section “Discussion” I do not agree with the authors’ claim “However and to the best of our knowledge, this is the first paper that is explicitly aimed at describing how a large and complex open-source software ecosystem implemented a time-based release strategy.” The PhD thesis of Germán Poo-Caamaño (referenced as [22])  is a very nice counter-example. In addition, there are relevant papers performing empirical analyses on release planning, which are not mentioned in this paper. Just to mention few of them: 
+Rossi et al.: Download Patterns and Releases in Open Source Software Projects: A Perfect Symbiosis? OSS 2010: 252-267
+Villarroel, et al.: Release planning of mobile apps based on user reviews. ICSE 2016: 14-24
+Maximilian Steff et al.: Evolution of features and their dependencies - an explorative study in OSS. ESEM 2012: 111-114
+Didar Et al. Release Readiness Classification: An Explorative Case Study. ESEM 2016: 27:1-27:7
+
+2. I also found  the description of the strategy in OpenStack  not clearly and univocally reported in the paper:
+
+For example, the phases reported at page 6 “encompasses planning, discussion, implementation and fixing release critical bugs (all in a sequential way) do not match the phases in Fig. 1 or at least the matching must be explained.  This is also due to the fact that Fig. 1 is introduced too late.
+
+Actually, the description in “ OpenStack Release Team. Release Management (In OpenStack Project Team
+Guide). http://docs.openstack.org/project-team-guide/release-management.html, 2016. “  (also referenced by the authors) is much clearer and says <! RA Fixed> 
+
+(1) common cycle with development milestones (a https://wiki.openstack.org/Governance/Approved/Incubation
+time-based release cycle which results in a single release at the end of the development cycle)
+(2) common cycle with intermediary releases (a time-based release cycle which results
+in multiple releases within the development cycle), and
+(3) independent release cycle (a release cycle without a coordinated release).
+
+Furthermore, the description and discussion on release management in OpenStack of the PhD thesis of Germán Poo-Caamaño (also referenced as [22]) is more clear than in this paper. 
+
+3. The title “Release early, release often and release on time. An empirical case study of release management.” does not reflect the contribution of the work. This is also related to the fact that the message of the paper is not very well conveyed.
+
+4. It is not clear what is the final result/claim of the authors: in the result section they state that the OpenStack strategy is  “a time-based release management strategy” but in the abstract and in the motivational part of the paper such strategy has been always referred to  as hybrid.
+
+Minors:
+
+The “Independent release model” (pg. 9) for specific components or task is not completely independent as it has to be framed within the 6 months of the typical release model.
+
+Fig. 1 does not include the trailing two-weeks stage
+
+Few concepts are not described or referenced
+
+OpenStack Design Summit pg. 6
+
+“After getting familiar with many social-technical issues within OpenStack” pg. 4. What re they?
+
+inter-organizational software ecosystems pg. 4. What are they?
+
+Typos <RA >
+pg. 6 of the of -> of the
+oopen-> open all through the paper
+pg. 1an fast growing cloud -> a fast growing cloud

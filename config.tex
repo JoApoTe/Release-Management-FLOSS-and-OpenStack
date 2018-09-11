@@ -1,0 +1,76 @@
+\RequirePackage{etoolbox}
+
+% #################### Conditional formatting ############################
+
+% Most conditional text formatting is implemented using Boolean Expressions provided by the etoolbox package 
+% See ftp://ftp.funet.fi/pub/TeX/CTAN/macros/latex/contrib/etoolbox/etoolbox.pdf for examples 
+% See small example 1 at http://tex.stackexchange.com/questions/5894/latex-conditional-expression 
+% See small example 2 at http://notesofaprogrammer.blogspot.fi/2014/10/conditional-processing-of-latex.html  
+
+
+% Shall the boxes arround submited content be displayed? 
+% Such boxes are invoked in the document with the 'submitedtext' enviroment and the 'SubmittedNote' command 
+
+\newtoggle{boxSubmittedContent}
+
+
+%\toggletrue{boxSubmittedContent}
+\togglefalse{boxSubmittedContent} 
+ 
+
+ 
+ 
+% Shall the digesting literature content be displayed? 
+% Such boxes are invoked in the document with the 'submitedtext' enviroment and the 'SubmittedNote' command 
+
+\newtoggle{showLiteratureDigests}
+
+
+%\toggletrue{showLiteratureDigests}
+\togglefalse{showLiteratureDigests} 
+ 
+ 
+ 
+% Is this final work to be submited  
+% Or its a fraft where I can show content 
+\newtoggle{finalToSubmit}
+
+
+\toggletrue{finalToSubmit}
+%\togglefalse{finalToSubmit} 
+ 
+ 
+ 
+ 
+ 
+% Parts of this document can be hiden/displayed to specific audiences using the multiadience package 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%   Should Figures and tables  be places on site? Or in the end of the document?  %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% bolean conditional that sets tables and figures on site vs vs on document  
+\newif\ifTaFigOnEnd
+
+% Uncommend if figures and tables should be on end 
+%\TaFigOnEndtrue
+
+% Uncommend if figures and tables should be on end 
+\TaFigOnEndfalse 
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%        Should the organizational description be included as well?       %%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newtoggle{showOrgDescription}
+
+
+%\toggletrue{showOrgDescription}
+\togglefalse{showOrgDescription} 
+
+

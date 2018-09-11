@@ -1,0 +1,1356 @@
+% Moved overleaf for second jisa 2018 revision
+%%% BioMed_Central_Tex_Template_v1.06
+
+%%                                      %
+
+%  bmc_article.tex            ver: 1.06 %
+
+%                                       %
+
+
+
+%%IMPORTANT: do not delete the first line of this templateFig
+
+%%It must be present to enable the BMC Submission system to
+
+%%recognise this template!!
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%                                     %%
+
+%%  LaTeX template for BioMed Central  %%
+
+%%     journal article submissions     %%
+
+%%                                     %%
+
+%%          <8 June 2012>              %%
+
+%%                                     %%
+
+%%                                     %%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\documentclass[twocolumn]{bmcart}% uncomment this for twocolumn layout and comment line below
+\documentclass[dvipsnames]{bmcart}
+
+% should be one of the first to load
+\usepackage{etoolbox} 
+
+%%% Load packages
+\usepackage{amsthm}
+
+
+\usepackage[german,finnish,english]{babel}
+\usepackage{natbib}
+\usepackage[utf8]{inputenc} %unicode support
+%\usepackage[applemac]{inputenc} %applemac support if unicode package fails
+%\usepackage[latin1]{inputenc} %UNIX support if unicode package fails
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                             %%
+%%  If you wish to display your graphics for   %%
+%%  your own use using includegraphic or       %%
+%%  includegraphics, then comment out the      %%
+%%  following two lines of code.               %%
+%%  NB: These line *must* be included when     %%
+%%  submitting to BMC.                         %%
+%%  All figure files must be submitted as      %%
+%%  separate graphics through the BMC          %%
+%%  submission process, not included in the    %%
+%%  submitted article.                         %%
+%%                                             %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\def\includegraphic{}
+\def\includegraphics{}
+
+
+%%% Put your definitions there:
+\startlocaldefs
+
+
+
+
+
+
+
+\usepackage[autostyle]{csquotes}
+
+
+
+
+% For putting a nice box arround Figure here or Table here
+\usepackage[tikz]{bclogo}
+\usepackage{calc}
+\usepackage[nomessages]{fp}%
+
+
+% To write down that a table or Figure should be here inserted 
+\newcommand{\InsertHere}[4]{
+%Arg1 {#1} Arg2 {#2} Arg3 {#3} Arg4{#4} 
+\begin{bclogo}[couleur = blue!30, arrondi = 0.1, logo=\bctrombone, barre = none, marge=5]{{#1} {#3}}
+\vspace{#4pt}
+{#1} {#3} \textbf{#2} to be inserted here.
+\vspace{#4pt}
+\end{bclogo}
+}
+% Example of use 
+%\InsertHere{Table}{Multidisciplinary approach}{\ref{mul_aproach}}{40}
+
+
+
+%% USE THOS ONE FOR TABLES %%
+
+% *** ALIGNMENT PACKAGES ***
+%
+\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/required/tools/
+
+\usepackage{multirow}
+% for column spanning 
+
+
+
+% hyry: optimizes the spaces between letters
+\usepackage{microtype} 
+
+% 
+%\bibliographystyle{abbrv}
+%\bibliographystyle{acm}
+%\bibliographystyle{ieeetr}
+
+%\includeonly{config,reviewAndCommentTools,submissionAndRevisionTools,digestingLiterature}
+
+% That is were we keep the main paramenters/configurations for dynamic text generation
+%\include{config}
+ 
+% Use tools to review and comment the paper - feedback is beautifull -- and within the latex document is even better 
+%\input{./ownLatexTools/reviewAndCommentTools.sty}
+% Dynamic text used in the paper 
+
+% Use tools to note when, where and which content was submited/published/under-review - avoid copyright issues 
+%\input{ownLatexTools/submissionAndRevisionTools.sty}
+
+
+% Use tools to keep lessons learned from reading a particular article arround 
+%\input{ownLatexTools/digestingLiterature.sty}
+
+ 
+
+\usepackage{multicol}
+% balances out the columns on the last page of, for example, your author index
+
+
+\usepackage[bottom]{footmisc}
+% together with style option [bottom] places all footnotes at the bottom of the page
+
+
+% For tables 
+
+\usepackage{tabularx}
+\usepackage{booktabs}
+
+% For nice labels 
+\usepackage{calc}  
+\usepackage{enumitem}
+
+
+
+
+% to typeset URLs, URIs, and DOIs
+\usepackage{url}
+\def\UrlFont{\rmfamily}
+
+
+% As a variation on the verbatim theme, the numberedblock package allows you to label code blocks with a marginal number, and reference them with \ref.
+\usepackage{numberedblock}
+
+
+% \setlength\maxblocklabelsize{-0.4in}
+% 
+% \setlength\blockindent{0.2in} 
+% 
+ \renewcommand\blocklabel[1]{}
+
+ 
+ 
+
+% For theoretical propositions 
+\theoremstyle{definition}
+\newtheorem{theorem}{Theoretical Proposition}
+
+% For glossaries
+
+%\usepackage{acronym}
+\usepackage[printonlyused]{acronym}
+%\usepackage[printonlyused,withpage]{acronym}
+
+%\usepackage[toc,nonumberlist]{glossaries}
+
+
+
+%%% Include configuration in config.tex 
+\input{config}
+%% Include some nice tools for commenting 
+
+
+\input{latex-tools/reviewAndCommentTools.sty}
+
+\input{latex-tools/submissionAndRevisionTools.sty}
+
+%% Include some tips for paper development
+\input{latex-tools/paperTips.sty}
+
+
+\iftoggle{finalToSubmit}{
+% Final version to submmit ? 
+\renewenvironment{newStuff}{}{}
+\renewcommand{\newPara}[1]{#1}  
+\renewcommand{\boxreview}[2]{}
+\usepackage[disable,prependcaption,textsize=tiny]{todonotes}
+% 
+
+
+}{
+% Development version before submmitiing 
+
+
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+% 
+
+
+
+}
+
+
+
+
+%% For the nice quotes 
+
+\usepackage{epigraph}
+\setlength\epigraphwidth{8cm}
+\setlength\epigraphrule{0pt}
+
+\makeatletter
+\patchcmd{\epigraph}{\@epitext{#1}}{\itshape\@epitext{#1}}{}{}
+\makeatother
+
+
+% Hyperef should be the last thing to be loaded  
+\usepackage[]{hyperref}
+
+ % Needs to come after hyperfre 
+% To refer to more than on figure or table 
+\usepackage{cleveref}
+
+
+
+
+\endlocaldefs
+
+
+
+
+
+% Commented as its for OSS templatye Spring LNCS
+%\author{Jose Teixeira}
+%\title{Release Management, FLOSS and OpenStack}
+%\date{01/11/17}
+% RECOMMENDED %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+
+
+\begin{document}
+
+
+
+
+
+%%% Start of article front matter
+\begin{frontmatter}
+
+\begin{fmbox}
+\dochead{Research}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter the title of your article here     %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Release early, release often and release on time.  A longitudinal case study of  release management in the OpenStack software ecosystem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter the authors here                   %%
+%%                                          %%
+%% Specify information, if available,       %%
+%% in the form:                             %%
+%%   <key>={<id1>,<id2>}                    %%
+%%   <key>=                                 %%
+%% Comment or delete the keys which are     %%
+%% not used. Repeat \author command as much %%
+%% as required.                             %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author[
+   addressref={aff1},                   % id's of addresses, e.g., {aff1,aff2}
+   corref={aff1},                       % id of corresponding address, if any
+%   noteref={n1},                        % id's of article notes, if any
+   email={jose.teixeira@abo.fi}   % email address
+]{\inits{JT}\fnm{José} Apolinário \snm{Teixeira}}
+% Somehow Apolinario appears as your surname in the running head, not Teixeira. Is that intentional?
+
+\author[
+  addressref={aff1},  
+   email={ekarsten@abo.fi}   % email address
+]{\inits{HK}\fnm{Helena} \snm{Karsten}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter the authors' addresses here        %%
+%%                                          %%
+%% Repeat \address commands as much as      %%
+%% required.                                %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% This is how ÅA wants to use its name in English
+\address[id=aff1]{%                           % unique id
+  \orgname{Åbo Akademi University}, % university, etc
+  %\street{},                     %
+  %\postcode{}                                % post or zip code
+  \city{Turku},                              % city
+  \cny{Finland}                                    % country
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter short notes here                   %%
+%%                                          %%
+%% Short notes will be after addresses      %%
+%% on first page.                           %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{artnotes}
+%\note{Sample of title note}     % note to the article
+%\note[id=n1]{Equal contributor} % note, connected to author
+\end{artnotes}
+
+\end{fmbox}% comment this for two column layout
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% The Abstract begins here                 %%
+%%                                          %%
+%% Please refer to the Instructions for     %%
+%% authors on http://www.biomedcentral.com  %%
+%% and include the section headings         %%
+%% accordingly for your article type.       %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{abstractbox}
+
+
+\input{./abstract.tex}
+%
+
+\end{abstractbox}
+
+\end{frontmatter}
+
+
+
+\section{Introduction}
+
+% Gramarlly lite checked
+The dictum of ``Release early, release often'' by Eric Raymond as the Linux modus operandi \cite{raymond_cathedral_1999,raymond2001cathedral}
+highlights the importance of release management in open source software development (see \cite{Zhao_et_al2000,aberdour2007achieving,michlmayr2015and}).  
+Across disciplines, release management is acknowledged to be a very complex process that raises many issues among the producers and users of software 
+\cite{barqawi_et_al2016,khomh2015understanding,choudhary2015research,Wright_et_al2012}.  However, there are very few empirical studies addressing 
+release management in open source software development \cite{michlmayr2015and,Poo-Caamano2017}. 
+%
+This is unfortunate since many lessons can be learned from open source software communities \cite{O'Reilly_1999,spinellis2004open,fitzgerald2011open} because they allow studying the socio-technical aspects of software development freely whilst the proprietary model allows access only to a few scholars.  
+
+% Gramarlly lite checked
+Given this scarcity of empirical work on release management in the context of open source software \cite{michlmayr2015and,Poo-Caamano2017},
+we address how a particularly large, complex and highly networked open source software ecosystem implemented and refined a time-based release strategy. Taking the case of OpenStack, a fast growing cloud computing platform that is increasingly attracting scholarly attention   (e.g., \cite{wuhib2012dynamic,corradi2014vm,teixeira2015lessons,ge2015openanfv,malik2017measurement}), we explore how a time-based release management strategy was implemented in practice  by looking at the overall release management process \textit{per se} 
+ as well as the infrastructural tools that support it. 
+
+ 
+% What are our resutls.  JISA2017 R1 issue 
+% Grammaly checked 23 May 
+By following OpenStack since its inception at the\ac{NASA}\footnote{\label{noteHistory}See \url{https://docs.openstack.org/project-team-guide/introduction.html} for a brief overview of the history of OpenStack as provided by the community.},
+%Last retrieved by the authors on 22 May 2018.}
+we narrate the evolution of release management at OpenStack. By investigating this 'moving target', we found out that the cross-project release management team relies upon freezes to encourage developers to change their production focus from the development of components to the overall upstream integration and stabilization of components as a whole. After many refinements, OpenStack runs now a time-based release management cycle that is quite liberal (i.e., open to changes and flexible to adaptation). In particular situations, the different sub-project teams across the community are allowed to work around the 'default' six months release cycle. As the project grew, different release cycles started to co-exist across the various OpenStack sub-projects.  Release management started depending heavily on many software tools partially automating the release management process (e.g., tools for version control, revision control, continuous upstream integration, continuous upstream testing, and configuration management).  
+Besides its acknowledged benefits, the implementation of a liberal time-based release strategy is a challenging cooperative task interweaving people with processes, technology, and organizations.
+% you could list the benefits before the sentence starting "the implementation...
+ 
+\section{Prior related work}
+
+Across disciplines, but predominantly in software engineering, plenty of research addressed issues of release management (see \cite{Muller_et_al2006,stark1999examination,Ruhe2010book,jorgensen2001putting,Wright_et_al2012,cleveland2014orchestrating,Laukkanen2018} among others).  Whilst we acknowledge and value such research, we note that the studies were mostly conducted in single firms that released proprietary software; a sharp contrast with our case where multiple firms release open source software.  
+% We warn that existing knowledge grounded on the studies of a single firm releasing proprietary software can hardly be generalized to the context of open source software ecosystems where multiple firms jointly develop (see \cite{Franco_et_al2017} for a recent systematic mapping of research on open source software ecosystems). 
+
+On that regard, a framework for analyzing openness in the context of digital platforms and ecosystems recently proposed by Teixeira (2015) \cite{teixeiraopenness_2015} raises issues of governance, transparency, market and intellectual property that can be used to juxtapose release management on the single firm releasing proprietary software vs. the network of firms releasing open source software:  
+
+\begin{itemize}
+ \item \textit{Governance}.  There is a sharp contrast in terms of inclusiveness and control across these two settings. While a single firm releasing proprietary software has more control over its development processes, the network of firms needs to accommodate multiple and often conflicting agendas. Release management in open source software ecosystems needs to accommodate that participants can have different and competing business models and thereby different motivations to engage and contribute. Furthermore, release management in open-source projects is more exposed to different mental models, different corporate and individual cultures in a setting or irrevocable openness \cite{howison2014collaboration}. 
+ In addition, open-source ecosystems also tend to be more inclusive to third-party contributors (e.g., students, academics or users among others that do not need a certain organizational affiliation or license to contribute). The power and the influence on deciding what is and what is not released are shared across multiple and heterogeneous participants \cite{teixeira2015lessons}. 
+ 
+ \item \textit{Transparency}.  While it is common for the single firm releasing proprietary software to hide information about the software being released (e.g., the source code, the bug tracking information), the same is not customary in open source software ecosystems where access and transparency are required for the community to function. It is also worth remarking that while most open source software is released on the Internet (i.e. to a repository or a website where it can be consumed by others), much proprietary software is only considered released when deployed in the customers' production environment \cite{Laukkanen2018}.
+ 
+ \item \textit{Market}. While a single firm releasing proprietary software has more control over the commercialization of the software and its complements, in the case of open source software ecosystems, the value exploration around a component is out of the control of a single firm. Multiple firms can compete for the value around the 'common' software being released. In the case of OpenStack, when deciding whether a certain open source component is released or not, a number of issues can be raised, such as 'Will the component compete with some of our proprietary offerings (e.g., plug-ins)?', 'Will the component allow us to win some consulting and deployment contracts?', 'Will the component increase the demand for our hardware?'or 'Will the component increase the demand for our hosting infrastructure?'  among other market-related issues that can impact release management.
+
+ \item \textit{Intellectual property rights}. Releasing software can create \textit{prior art} in terms of intellectual property rights. Single firms releasing proprietary software tend to deal more with intellectual property protection issues. In open software ecosystems, there might be intellectual property issues as well, but they often need to be resolved across multiple participants. Furthermore, by releasing under an open source software license, the developers or firms are giving up rights that are automatically granted by law. Note that it is not uncommon for firms to submit related patents prior to releasing a certain software component. This aspect is more relevant in markets where software can be patentable (USA, Japan, and South Korea) \citep{Hall_andMacGarvie2010}. From the point of view of brands and trademarks, there is also a sharp contrast. While a single firm often has control over the trademark of a given software product, in the case of open-source software such control is often multi-lateral and negotiated across the different individuals and organizations that contribute to the joint development of open-source software. Afterall the quality of a given release can affect the value of the brand and the trademark associated with the software being released.  
+
+
+\end{itemize}
+
+ 
+% Gramarlly lite checked 
+Within the specific context of open source software, it is known that release management affects both producers and users of software. On the producer side, prior research suggests that community activity increases when the scheduled release date gets closer \cite{rossi2009analysis}. On the user side,  new releases result in spikes of downloads \cite{wiggins2009heartbeat}. \begin{newStuff}Library projects where new code libraries are developed and client projects where the libraries are reused organize release management in a different way to accomodate their technical dependencies.\end{newStuff} On that regard, recent results  suggest that client projects are quicker to update libraries with a rapid release cycle compared to actual library projects with a longer release cycle \cite{Ihara_et_al2017}.  The same study also suggests that client projects are more likely to adopt the latest version of libraries with shorter release cycles.
+As noted in the early work of Michlmayr \cite{Michlmayr07qualityimprovement} focusing on release management in open source software, release management is concerned with the delivery of products to end users. It is therefore not surprising that recently some have seen release management as a process that supports value co-creation among suppliers and consumers of software \cite{cleveland2014orchestrating,barqawi_et_al2016}. 
+
+% Gramarlly lite checked 
+As pointed out by three recent doctoral dissertations addressing release management in the context of open source software  \cite{Michlmayr07qualityimprovement,wright2012release,poo2016release}, 
+most open source software communities adopt either a feature-based or a time-based release strategy. Many prominent open source software projects start with sporadic releases in which developers announce the newly developed features\footnote{See the historical newsgroup \url{news:comp.os.linux.announce} where developers announced new releases of open source software for Linux with a strong emphasis on the implemented features.}. However, as many of these projects grew in size and complexity, they started adopting time-based release strategies\footnote{See  \url{https://www.kernel.org/category/releases.html}  and 
+\url{https://www.debian.org/releases/} for information on the releases of Linux (2-3 months release cycle) and Debian (with a two years release cycle).}. 
+An early empirical study \cite{martinez2008using} that mined the repository of a project while it adopted a time-based release strategy (i.e., the evolution of an e-mail client),  reported that the adoption of a time-based release cycle boosted the development in general terms over time in comparison to feature-based release cycles. 
+%
+There are many problems associated with feature-based strategies. For example, if critical features are not ready, they block the overall release.  Another example is when developers work on the features they are interested in, coordinating their activities can be challenging \cite{Michlmayr_et_al2007}.
+A recent studies based on interviews with key members of seven prominent volunteer-based open source projects, points out that these problems can be overcome by employing a time-based release strategy \cite{michlmayr2012time,michlmayr2015and}. 
+
+% Gramarlly lite checked 
+Time-based release strategies encompass meeting a schedule, an agenda, or a deadline. These can be either strict or liberal.  To enforce that software is released on time, the use of freezes (such as code freezes) will set a clear deadline for the software development team.  Open source developers have much freedom to manage their own software development efforts, but the use of freezes acts in the opposite way, by constraining the developers. If new features are not implemented before the upcoming freeze, they will not be included in the next release. Consequently, when developers realize this, the development of these features is either canceled, put on hold, or developed separately for future releases.
+
+% Gramarlly lite checked 
+The freezes that occur before the scheduled time-based release, act as control mechanisms that slowly halt the production of the development core code \cite{fitzgerald2011open,Anand2017}. In large and complex open source software projects with a modular architecture integrating components with each other, this kind of a freeze forces developers to (1) fix and release the individual components upstream, (2) integrate the different components and test the integrated totality.  
+
+% Gramarlly lite checked 
+According to Fitzgerald, the freeze categories can include \cite{fitzgerald2011open}: 
+\begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries feature freeze}]
+\footnotesize
+ \item[feature freeze] no new functionality can be added, the focus should be on removing defects;
+\item[string freeze] no messages displayed by the program, such as error messages,  can be changed. This allows translating as many messages as possible before the release; \footnote{Here we add that many automated user interface testing tools and techniques depend on the stability of certain strings (see \cite{mesbah2009invariant,artzi2011framework}) as well.}
+\item[code freeze] a permission  is required to make any changes, even to fix bugs.
+\end{description}
+
+
+
+
+% 
+% \begin{table}
+% \Cref{t:AdvAndDis}.
+% \renewcommand{\arraystretch}{1.3}
+% \centering
+% \caption{Pros and cons of two distinct release strategies\label{t:AdvAndDis}}
+% \begin{tabularx}{\textwidth}[]{lll}
+% \toprule 
+% Release strategy  & Advantages &  Disadvantages\\
+% \midrule
+% Feature-based & TODO & TODO\\
+% Time-based & TODO &  ``they decrease test suite diversity and make testing more deadline oriented'' \cite{Mantyla2015}\\
+% \bottomrule 
+% \end{tabularx}
+% 
+% \end{table}
+% 
+% 
+% \begin{drafte}
+
+
+ 
+% \begin{table}
+% \color{violet}
+% \centering
+% \caption{Own ideas\label{t:NewAdvAndDis}}
+% \begin{tabularx}{\textwidth}[]{lll}
+% \toprule 
+% Release strategy  & Advantages &  Disadvantages\\
+% \midrule
+% Feature-based & TODO & TODO\\
+% Time-based & TODO &  Stress , many ideas get on hold and forgoten\\
+% \bottomrule 
+% \end{tabularx}
+% \end{table}
+% 
+% 
+% \end{drafte}
+
+
+
+
+
+\section{Empirical background}
+
+
+% Gramarlly lite checked 
+The cloud computing business is dominated by a small number of players (e.g., Amazon, Google and Microsoft). The leading players do not sell cloud infrastructure products. Instead, they provide bundled computing services. If there was no alternatives, all cloud computation would run in hardware and software infrastructures controlled by very few players with increased customer lock-in \cite{teixeira2015lessons}. 
+
+Competing with the providers of these services, the leading product alternatives are not commercial. Instead, they are four open source projects: OpenStack, CloudStack, OpenNebula, and Eucalyptus. While the commercial cloud computing services are developed and tightly controlled by a single organization, the open source products are more inclusive and networked where multiple firms participate in their development and where multiple firms attempt to capture value from them.
+
+OpenStack is an open source software cloud computing infrastructure capable of handling big data. It is primarily deployed as an ``Infrastructure as a Service'' (IaaS) solution.  It started in 2010 
+as a joint project of Rackspace, an established IT web hosting company, and NASA, the U.S. governmental agency responsible for the civilian space program, aeronautics and aerospace research.  As it evolved,  the project attracted much attention from the industry. 
+By the end of 2017, OpenStack counted with more than 82 000 contributors and 670 supporting companies. Furthermore, more than 20 million lines of code were contributed by developers in 187 countries\footnote{See \url{http://www.openstack.org/} for the official website.}. 
+
+Both private companies (e.g.,  AT\&T, AMD, Canonical, Cisco, Ericsson, HP, IBM, Intel, VMware, Citrix, and NEC,  among many others) and research-intensive organizations (e.g., NASA, CERN, Johns Hopkins University, Instituto de Telecomunicações, Universidade Federal de Campina Grande, and Kungliga Tekniska Högskolan, among  others)  work  together with independent, non-affiliated developers in a scenario of pooled  \ac{R&D}. 
+% Eija: "in the open source way" is not proper English. My guess is the "following the open source conventions" could be better, but I need to check this with a native English speaker.
+They work in the open source way, that is, emphasizing development transparency while giving up intellectual property rights. Paradoxically, even though OpenStack emphasizes collaboration in the joint development of a large open source ecosystem, many participating firms also compete  with each other. % as pointed out by \citet{teixeira2015lessons}.
+Among others, there is competition among providers of public cloud services based on OpenStack (e.g., HP, Canonical, and Rackspace), among providers of specialized hardware complementing OpenStack (e.g., HP, IBM, and Nebula), and among providers of complementary commercial software plug-ins that complement OpenStack (e.g., VMware, Citrix, and Cisco) (see \cite{teixeira_et_al_icis2016,teixeira2015lessons} for related research addressing cooperation among competitors within OpenStack). 
+
+% Scribendi lite checked  
+We decided to address OpenStack due to its perceived novelty, its highly inter-networked nature (i.e., an ecosystem involving many firms and individual contributors), its heterogeneity (i.e., an ecosystem involving both startups and high-tech corporate giants), its market size (\$1.7bn, by 2016\footnote{See \url{http://451research.com/report-short?entityId=82593}.}), its complexity (i.e., involving different programming languages, different operating systems, different hardware configurations) and size (20 million lines of code contributed by more than 82 000 developers). 
+
+% please clarify this, as reviewers seem to disagree on it
+From the early beginnings of OpenStack, the project  adopted a liberal six-month, time-based release cycle with frequent development milestones that raised much discussion among its developers. We found it an interesting case to study release management within the overlap of open source software, software ecosystems, and complex software systems. 
+
+\section{Methodological design}
+\label{sec:method}
+
+% Scribendi lite checked  
+This empirical case study was guided by the broad research question on ``How OpenStack implemented a time-based release strategy?'' A particular emphasis was given to the release management process \textit{per se} as well as to the infrastructural tools supporting it. Tools are focal as the OpenStack community attempts to automate the release management process as much as possible \footnote{See \url{https://doughellmann.com/blog/2016/03/15/} for a blog post regarding the process automation efforts by the OpenStack release management team.}. 
+
+
+% Scribendi lite checked  
+Our efforts were built on top of publicly available and naturally occurring archival data derived from the OpenStack project.  
+These data are not a consequence of our own actions as researchers, but are created and maintained by the OpenStack community in their own pursuits in developing a cloud computing infrastructure. We took into account many methodological notes in case study research that legitimate the use of archival data when studying a case ~\cite{runeson2008guidelines,Easterbrook2008,yin2011,eisenhardt1989building,flynn1990empirical}. 
+
+% Scribendi lite checked  
+We started by 'digesting' many websites officially related to OpenStack (e.g., \url{https://www.openstack.org/}, \url{https://wiki.openstack.org} and \url{http://docs.openstack.org/}), expanding later to other websites. When selecting the initial sources (i.e., departure points), we took into consideration key guidelines on how to conduct qualitative empirical research online ~\cite{kozinets_field_2002,kozinets_netnography:_2009}. From the initial sources, we followed several links to collect further information. The links often led to blogs maintained by organizations and individuals that recurrently contribute to OpenStack. Relevant data was meticulously organized in a database for later analysis \cite[pp 94-98]{yin1994case}. 
+
+% Scribendi lite checked  
+From our initial screening of qualitative data, we were able to: (1) make sense of the industrial background in which Openstack is embedded, (2) make sense of the complex software development processes that steer the project evolution, (3) survey complex inter-organizational arrangements within the project,  and (4) understand the role of many of the software tools that support its software development processes. After getting familiar with many social-technical issues within OpenStack, we analyzed the collected data with the lenses of extant knowledge in release management and open source software. 
+
+Given the scarcity of theoretical and empirical knowledge addressing release management in open source software \cite{michlmayr2015and,Poo-Caamano2017}, we explored and narrate  the evolution of release management in practice. Our rich narrative on how OpenStack implemented a six-month, time-based release cycle with frequent development milestones can increase our ability to understand and explain release management within the context of complex open source software ecosystems. 
+
+To enhance the validity of our narrative, we asked early four OpenStack developers (two of them with release management responsibilities) to  read and comment our \Cref{sc:process,sc:tools} in advance. One of our informants joined the project in November 2010 with the responsibility of organizing release management at OpenStack and reports since then to the technical committee of the OpenStack foundation. Another of our informants joined OpenStack in 2014 and currently leads a sub-project and recurrently attends cross-project team meetings dealing with release management. While the first one has a more managerial view on release management at OpenStack, the second one sees release management from the complementary developers' perspective.   
+In this way we reduced possible misinterpretations of the collected data. 
+
+
+Our description of release management in the particular case of OpenStack, that implemented a time-based release management strategy is organized around a dual view that aggregates two different aspects of release management. First, a view on release management as a complex and evolving inter-organizational socio-technical process; and second, an infrastructural view on the tools that support it. 
+
+\section{Results: a processual view}
+\label{sc:process}
+
+Our results aim at contributing to a better understanding of release management within complex open source software ecosystems. Release management can take many distinct forms and many lessons can be learned from how it is done in an open source software community \cite{fitzgerald2011open}. 
+%
+
+\input{release-management-process-description}
+
+
+\section{Results: infrastructural tools}
+\label{sc:tools}
+
+\newPara{
+% Grammarly checked  18 june 2018
+Given that release management at OpenStack relies on a vast tool-chain, we start by addressing tools that are mostly used at the beginning of the release cycle, in discussion, planning and specifying. After that, we cover tools that are more widely used during the implementation and stabilization of new features at the later stage of the release cycle. These include tools for version and revision control, reviewing and testing. The closer developers are to the end of the release cycle, the more important is the role of the tools supporting continuous integration, testing, and code-reviewing. We close with infrastructural tools supporting release management, elaborating on the novel OpenStack 'micro-tagging' approach and a new 'release notes manager' tool developed within the community as part of their own release management endeavors. 
+}
+
+\subsection{Discussion, planning and specifying}
+
+Starting a new release cycle emerges with many specifications and discussions.  At this planning stage, developers gradually leave the \textit{integration} and \textit{stabilization} mode to enter again into the \textit{planning} and \textit{development} mode. Besides considering what should be done, developers concerned with release management consider what can be done on time to be included in the upcoming release.  
+
+As the planning stage partially overlaps with the OpenStack design summit, many of the discussions take place face-to-face.  However, for a number of reasons (e.g., the discussions at the summit are fragmented in multiple parallel sessions and many developers are not able to attend the summit at all), developers use
+a number of infrastructural tools that facilitate the discussion and formalization of what should be developed during the next milestones. Even if the different project teams are free to use their own tools in an ad hoc manner, multiple communication, coordination, and collaboration tools are provided by the OpenStack infrastructure team. Among others, developers rely on \textit{LaunchPad} for blueprints, \textit{Sphinx} for specifications and \textit{StoryBoard}  for task tracking.  As seen also in other open source projects, communication and information sharing is supported by standard Web, Wiki, IRC and e-mail systems.  
+
+According to Poo-Caamano  \cite{Poo-Caamano2017}, coordination across multiple project teams requires a common infrastructure to facilitate communication to flow between the release team and the projects. Asynchronous channels, such as mailing lists, act as egalitarian media for discussion among a wide range of participants as the messages can be archived and made searchable. Conversely, synchronous channels, such as face-to-face meetings, may be richer, but they are less inclusive as they may exclude participants that cannot attend a physical face-to-face discussion. 
+% meeting software such as Skype can be used for f2f discussions with remote participants = also a sychronous channel
+Furthermore, as English is de facto the \textit{lingua franca} of most open source projects, asynchronous channels might be preferred by developers that may not be as fluent as their native English-speaking team mates \cite{Poo-Caamano2017}. 
+
+
+\subsection{Orchestrating distributed work, tagging and version control} 
+
+%%%%%%%%%%%%%%% Git %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+% Grammarly lite checked 30 Sep 
+Managing the release of software at scale requires a good orchestration of its evolving code base. Since the early days of OpenStack, Git\footnote{Git was created by Linus Torvalds in 2005 for development of the Linux kernel and it is now used by millions of software development projects.} plays an important role in release management at OpenStack. In a highly distributed software development environment with thousands of developers, the branching and merging capabilities of Git are essential for governing what code should be at each branch of the official OpenStack repository. Cloning, fetching and pulling from the official repository maintained by the OpenStack downstream to the developers' local environment, as well as branching, committing and pushing upstream, are common OpenStack development operations that rely on Git. 
+
+% On centralized release tagging 
+%https://specs.openstack.org/openstack-infra/infra-specs/specs/centralize-release-tagging.html
+
+% Grammarly lite checked 30 Sep 
+As other distributed version control systems, Git has the ability to tag specific points in the source code history as being important. Therefore, it is a common procedure to do 'versioning' (ie., naming the release) using Git tags\footnote{See \url{http://semver.org/} for the Semantic Versioning Specification (SemVer) adopted by OpenStack that distinguishes between MAJOR, MINOR and PATCH increments.}. The use of tags allows both developers and users of OpenStack to track the incremental evolution of the software being developed intuitively. Naming different versions of the software is essential for both developers and users of OpenStack that often need to deal with multiple versions of OpenStack. 
+% Grammarly lite 3 Oct 17 
+
+As Git tags apply only to a commit and are not branch-aware\footnote{Please note that in Git, branches are essentially mere commit bookmarks.}, OpenStack developers encode key release information such as project name, release series, branch and commit hash, within plain YAML\footnote{YAML is a human-readable data serialization language commonly used for configuration files. See \url{http://yaml.org/} for more information.} text files. Developers produce a large variety of code that is hosted across multiple Git repositories. Given the complexity of the OpenStack, such repositories are highly inter-dependent and tightly integrated. For example, a repository might host a library used by multiple teams in multiple components, or a core API might be 'called' by the many distinct services that are implemented in OpenStack. Therefore, once developers formally release their work, their deliverable may span across multiple repositories. At the operational level, this means that developers might need to encode multiple (project, commit hash) tuples in a YAML file. The more repositories developers change, the higher number of YAML files needs to be delivered or the more complex a single YAML file will be. 
+
+% Grammarly  lite 3 Oct 17 
+Enriching this description of release management in practice at OpenStack, the following illustrative YAML file \hyperlink{hl1}{1} , elucidates how the \textit{neutron} project team delivered the version  \textit{10.0.0.0rc1} from the \textit{ocata} stable release series that pointed  out to the commit \textit{4ae6790d82542738edbb531a829b60ff8a44a3fe} from the \textit{neutron} Git repository and the commit \textit{8cfa2de66becce06f3e11bbab7562b11649e54c9} from the \textit{neutron-fwaas} Git repository\footnote{Contextually, the \textit{neutron} repository hosts the core networking services of OpenStack while the \textit{neutron-fwaas} project hosts the firewall services that heavily depend on them.}.  When the different project teams encode this information in their deliverables, the release management team is able to verify better the completeness and consistency of the overall contributions that are to be released. Furthermore, as this information is provided openly\footnote{See \url{https://github.com/openstack/releases}  for tracking the release deliverables of OpenStack.} in a standardized and machine-readable way, it enables a high level of automation of the release management activities. 
+
+
+\begin{figure}[h] 
+ \footnotesize
+\begin{numVblock}
+---
+launchpad: neutron
+team: neutron
+release-notes: https://docs.openstack.org/releasenotes/neutron/ocata.html
+type: service
+release-model: cycle-with-milestones
+branches:
+  - name: stable/ocata
+    location: 10.0.0.0rc1
+releases:
+  - version: 10.0.0.0rc1
+    projects:
+      - repo: openstack/neutron
+        hash: 4ae6790d82542738edbb531a829b60ff8a44a3fe
+      - repo: openstack/neutron-fwaas
+        hash: 8cfa2de66becce06f3e11bbab7562b11649e54c9
+    highlights: |-
+      * ConntrackNetlink driver to delete conntrack entries
+      * XenAPI: Support daemon mode for rootwra 
+      
+\end{numVblock}
+\raggedright{\sffamily  \par \textbf{\hypertarget{hl1}{Illustrative YAML file 1}} - Release information formalized in a file. }
+\end{figure}
+
+
+ %%%%%%%%%%%%%%%%%%%% Git and GPG %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ 
+ % Grammarly checked 5 of October 2017
+The ability of Git to mark specific points in the source code history as tags is accompanied with support for annotating and signing them using GnuPG\footnote{For more information on GnuPG see \url{https://gnupg.org/}.} cryptographic keys.  On the one hand, the tagging functionality of Git is often used to mark release points (v1.0, and so on), while on the other hand, the annotating and signing functionalities allow developers to add securely their name, email and tagging message (often the version). The annotating and signing functionalities provide security in the sense of integrity checking, where the other developers can check if the tag and the corresponding code were really issued by a trusted developer. 
+If the Git branching functionality allows the developers to deal with $n$ different versions of the repository at the same time, the tagging functionality allows developers to mark a point in time in the repository that is not aware of its branch. It is a good practice for developers to tag and sign to mark a released version and, if post-release bug fixing actions are required, to create a bug-fixing branch at the tag\footnote{See \url{http://nvie.com/posts/a-successful-git-branching-model/} for a branching model that inspired how the Git branching and tagging functionalities are used in OpenStack.}.  In the particular case of OpenStack,  the use of tags gained much importance for release management.  In the beginning of OpenStack, it was a selection of core and mature repositories at a given time that dictated what was in the official OpenStack release. This is called the integrated release model. Since the OpenStack Liberty release (October 2015), tags signed by the  Technical Committee (TC)  dictate what is the official OpenStack release. This is called the big tent release model. In other words, since the Liberty release, OpenStack software releases are not seen as a selection of core repositories, but as code tagged by the Technical Committee (TC) across all the repositories of OpenStack. It is important to note that only software officially released by OpenStack can use the OpenStack trademarks for example for marketing of the software using the OpenStack name or logo\footnote{See the guidelines laid out in sections 4.1 and 4.13 of the OpenStack Foundation Bylaws for legal details.}.  
+ 
+ 
+ 
+%%%%%%%%%%%%%%%%%%%%%%  Gerrit  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Link on the history of gerrit \url{https://gerrit-review.googlesource.com/Documentation/dev-design.html}
+ 
+\subsection{Reviewing} 
+
+% Grammarly lite checked 6 of October 2017
+Release management includes deciding if a certain piece of code is ready to be released or not. In other words, stakeholders in the release management must ensure whether the quality of certain software is at an acceptable level to be released or not. Therefore, release management and peer review are inseparable processes 
+\cite[]{jorgensen2001putting,sharma_et_al2002framework,narayan2012leveraging,stark1999examination}. Many successful open source software projects employ formal code review activities prior to the release\footnote{As pointed out by Michlmayr (2007) \cite{Michlmayr_et_al2007} few open source software projects have a formal post-release review process.}. Core reviews are effective means for quality assurance, knowledge dissemination, social relationship building, achieving better designs, and ensuring maintainable code in long term \cite{bosu_et_al2017process}. In the OpenStack case, peer review is handled by Gerrit\footnote{See \url {https://www.gerritcodereview.com/} for more information on Gerrit.}, a tool that hides many of the complexities of reviewing code by directly using Git commands under a web-based tool designed solely for the purpose of supporting code review activities.  As in many other open source projects, the submitted code is reviewed before it is accepted into the official code base prior to the release announcements. While in many other projects developers submit more atomic commits or patches for review, in the case of  OpenStack, developers submit Git branches that are more bulky units, to be reviewed. To do so, OpenStack developed and recommends using the Git review tool for submitting code. This tool is invoked as a Git subcommand and it handles all the details of working with Gerrit. The process is quite straightforward: developers implement new features in their own local Git branch, commit their changes locally and then simply invoke the $git\ review$ subcommand that will submit the 'patchset' to Gerrit. Developers will then receive an acknowledgment of the change that was submitted for review together with an URL pointing to their submission status in Gerrit (note some parallels with academic peer review). Developers also receive one or more emails from the automatic testing system, reporting the testing results of the proposed changes. All this takes place in a sequence towards the future landing of the code and its later release. 
+
+
+% Grammarly lite checked 9 of October 2017
+Release management constrains the code review processes.  A change should be proposed a few weeks before the targeted milestone publication date in order to be reviewed in time and included in the same milestone. Furthermore, the use of release management freezes purposively minimizes the time that code reviewers spend 'drowned' in late code reviews for features proposed late. After the freezes, new feature code reviews should be rejected by the review team and postponed until the next series development opens. In order for the teams to integrate, stabilize and launch what was implemented so far, code review efforts should be limited to existing code and bug fixing submissions. Features implemented late can introduce regression bugs close to the release date, undermining the quality of OpenStack software as a whole. 
+
+\subsection{Testing, gating and continuously integrating} 
+
+%% Testing general 
+% Grammarly lite checked 8 Nov 
+While code reviews lead to human judgments on what code is ready to be released or not, the Quality Assurance (QA) and the Continuous Integration (CI) operations produce semi-automated judgments on whether a piece of code is of sufficient quality be released or not.  The mission of Quality Assurance is to ``develop, maintain, and initiate tools and plans to ensure the upstream stability and quality of OpenStack, and its release readiness at any point during the release cycle''\footnote{See \url{http://wiki.openstack.org/wiki/QA} for the mission statement of the OpenStack Quality Assurance team.}. This mission underlines the importance of automation in complex software development settings:
+
+
+\begin{quotation} 
+\footnotesize
+``OpenStack projects have robust automated testing. In general, we believe something not tested is broken. OpenStack is an extremely complex suite of software largely designed to interact with other software that can be operated in a variety of configurations. Manual localized testing is unlikely to be sufficient in this situation.''
+--- OpenStack Project Team Guide, as last edited on 20 Sep 2017\footnote{See 'OpenStack Project Team Guide' wiki page, 'Testing (QA and CI)' section at \url{https://docs.openstack.org/project-team-guide/testing.html} for the original source and more information on Quality Assurance (QA) and the Continuous Integration (CI) operations at OpenStack.\label{qaci}}.
+
+\end{quotation}
+
+
+% Into to battery testing 
+% Grammarly lite checked 8 Nov
+Developers should test their contributions properly before submitting them for review, doing not only unit or functional tests but also performing integration and performance tests against the official code base. Furthermore, style checks should also be employed for ensuring sufficient consistency on source code jointly developed by multiple developers. However, as the OpenStack code base is enormous with more than 20 million lines of code by October 2017, and as many of the OpenStack cloud computing features require vast resources (e.g., clusters of multiple machines, multiple hypervisors, and hardware-accelerated virtualization among others resources typically found in data centers), not all developers have access to sufficient resources to run all the tests. Furthermore, code reviewers cannot insure or assume that developers have performed all of the relevant testing prior to their code submissions. Many of the OpenStack projects  implement therefore batteries of tests (aka sets of testing jobs) that automatically run on every change to the project\footnote{For a detailed description on how the contious integration testing system of OpenStack works, see \url{http://www.joinfu.com/2014/01/understanding-the-openstack-ci-system/} -- A blog post from an OpenStack contributor affiliated with Mirantis.}. 
+These test batteries are often developed in cooperation and coordination with the Quality Assurance, Infrastructure and Release Management teams. 
+
+In OpenStack, test automation is implemented in \textit{Jenkins} and \textit{Zuul}. Test results appear in \url{Gerrit} allowing developers to easily trace their contributions. 
+% Bug trackers 
+% Grammarly lite checked 8 Nov
+Jenkins automation server does the most atomic work of building and executing testing jobs, including all unit, integration, and code-style tests. Jenkins is partly controlled by Zuul which determines what jobs are run and when. Zuul acts also as a gateway between Gerrit and Jenkins. In one direction, it listens to the Gerrit event stream and triggers jobs  on Jenkins. In the other direction, Zuul listens to Jenkins testing jobs results and adds a machine-made review to Gerrit. Test results are reported to Gerrit by Zuul in the form of a 'machine' vote that will complement the human code-reviews. Only after the code reviews have been completed and the code passed the Jenkins/Zuul tests, the 'gate opens' and the code can finally 'land' into the official master branch. A stable branch will be cut by the end of the release cycle from this master branch.  
+
+After releasing, keeping the stable branches in good health is an ongoing effort. Developers can see what bugs are currently causing gate failures and they can prevent code from merging into stable branches. Even if the tracing of bugs varies from team to team, the Launchpad platform\footnote{See \url{https://launchpad.net/} for more information on the Launchpad software collaboration platform provided by Canonical (a top contributor to OpenStack). } remains the most used infrastructure for tracking bugs. As fixing bugs in stable branches often requires much cooperation and coordination among different teams,  OpenStack developers rely on Etherpad\footnote{See \url{http://etherpad.org/} for more information on the collaborative online editor of documents provided by the  Etherpad Foundation.} dynamic documents that link to information on current bugs and in-flight fixes across the OpenStack ecosystem. Developers are encouraged to discuss bug fixing issues on the official IRC and mailing lists which are archived on the OpenStack website. As pinpointed by Poo-Caama{\~{n}}o et al. (2017)  \cite{Poo-Caamano2017}, release management information should be communicated across and made available to the overall ecosystem participants. 
+
+% Summative and formative feedback ... and openness 
+While the code reviews orchestrated by Gerrit provide individual formative feedback on the code-contributions, the continuous integration tests run by Jenkins  and Zuul provide machine-made (aka testing bots) summative feedback of the code contributions. Armisen et al. (2016) \cite{armisen2016formative} studied the the interplay between formative and summative feedback at OpenStack. They suggest that summative feedback (i.e., testing bots) influences how developers take formative feedback (i.e., code reviews). 
+
+While a code review vote is highly personal and might vary from reviewer to reviewer, the automated testing results are more often unassailable. In an analogy with the academic world, we could say that code that does not pass the continuous integration tests is code that tends to be "desk rejected". While code contributions are reviewed once in Gerrit, Jenkins and Zuul run the automated tests twice, before and after the approval by the reviewers.  The OpenStack community claims that continuous integrations tests are in line with the open and egalitarian nature of the OpenStack project as, after all, it should not matter where the code comes from, from which particular developer or company, it  needs to pass the same tests to make it to the official code base.
+
+\begin{quotation} 
+\footnotesize
+
+``OpenStack projects do not permit anyone to directly merge code to a source code repository. Instead, any member of a core reviewer team may approve a change for inclusion, but the actual process of merging is completely automated. After approval, a change is automatically run through tests again, and only if the change passes all of the tests, is it merged.
+
+This process ensures that the main branch of development is always working (at least as well as can be determined by its testing infrastructure). This means that a developer can, at any point, check out a copy of the repository and begin work on it without worrying about whether it actually functions.
+
+This is also an important part of the egalitarian structure of our community. With no member of the project able to override the results of the automated test system, no one is tempted to merge a change on their own authority under the perhaps mistaken impression that they know better than the test system whether a change functions correctly.''
+--- OpenStack Project Team Guide, as last edited on 20 Sep 2017\textsuperscript{\ref{qaci}}.
+
+\end{quotation}
+
+ 
+ 
+
+
+
+
+
+%% Testing UI testing  <-- A contribuition here --> 
+
+%% Grammarly checked 10 Nov 
+OpenStack is a large, complex and very heterogeneous project aggregating software for very different purposes and written in many different programming languages. Different project teams might adopt different testing tools depending on their particular context. For example, the Horizon project that implements the OpenStack’s Dashboard, which provides a web-based user interface to core OpenStack services such as Nova, Swift, and Keystone among others, adopted the Selenium user interface testing automation framework for web applications\footnote{See \url{http://www.seleniumhq.org/} for the Selenium official website.}. As Horizon is developed on top of the  Django web framework\footnote{See \url{https://www.djangoproject.com/} for more information on the Django web framework.} and it outputs dynamic web user interfaces, Selenium can be used to automate graphical user interface tests that run on top of the most modern web browsers. In other words, this tool allows Horizon contributors to write software 'bots' that test the evolving graphical user interface. That is, developers simulate certain user behaviors and check if the interface 'reacts' as expected. 
+
+
+%%%  Selenium for UI testing (Horizon part)
+
+Selenium uses the so-called locators to find and match the elements of a web page to interact with it for testing purposes. Selenium can hook with many user interface elements of dynamic HTML pages (e.g., Id, Name, Link, DOM, XPath, CSS). Therefore the Selenium user interface testing 'bots' need to co-developed \textit{vis-à-vis} with the user interface. Radical changes on the many elements of a graphical user interface can turn exiting user interface tests (orchestrated by Selenium in the OpenStack Horizon case) unreliable,  unless the user interface and its tests are co-developed in resonance with each other. The following illustrative commit log from the OpenStack Horizon Git repository \hyperlink{hg1}{1} illustrates the efforts of an OpenStack developer to maintain the user interface and its tests in congruence with each other. Regarding both release management and user interface testing automation, the use of the above-mentioned freezes along with the release management cycle can ease the writing of the user interface testing 'bots' as the user interface testing elements get frozen and stable.
+
+
+
+    
+    \begin{figure}[h]
+    \footnotesize
+    \begin{numVblock}
+ 
+    
+ Fix Selenium Tests 
+     
+ A recent update to XStatic-Jasmine appears to have altered the class name
+ that a selenium test was looking for. This patch amends the class so that 
+ the test correctly finds the class. 
+     
+ Change-Id: I8d6844cdb14a84bd5498429b8545cdca8ba173b6 
+     
+ Closes-Bug: 1567965 
+ (cherry picked from commit 7661db1ba438a13cf77d64913bfc88767b6bcdae)    
+    \end{numVblock}
+\raggedright{\sffamily  \par \textbf{\hypertarget{hg1}{Illustrative git commit log 1}} - Selenium test update. }
+    \end{figure}
+
+
+%% Release management team, briefly %% 
+
+\subsection{Cross-team release management } 
+
+% Grammarly checked 10 Jan 2017, 
+% In OpenStack, the release management duties are shared between these two teams.
+The release management team filters, assesses, validates and releases the overall code base. The team manages the release process for the many deliverables proposed by each project team at a given development cycle. The team also provides and maintains the many tools that support the overall release management duties (see \Cref{t:tools}). The release management team acts as a cross-project organization that spans the different project teams. It relies on a liaison from each team project to help with coordination and release-related tasks. This release management liaison is often the Project Team Leader or someone formally designated by the Leader. Release management liaison should exhibit leadership especially within the project team, exhibit communication skills within and across teams, follow the release guidelines, keep track of the development cycle tasks, attend the cross-project meetings (e.g., the technical committee meetings that generally happen on Tuesdays) and ensure that known bugs are correctly reported and triaged. Release management liaisons need to deal with many of the interdependencies across the different OpenStack project teams and their repositories.
+
+%% Micro tagging %%
+% Grammaly 11 JAn 2017
+In this way, much of the work with release management remains largely manual, far from fully automated. The release management team develops and maintains a significant number tools and scripts to handle the release process, but much of the work remains manual, something that the OpenStack community acknowledges and intends to  automate further. Since the release of the Liberty series (12th release of the project on 16 October 2015), OpenStack adopted a novel 'micro-tagging' approach together with a novel tool developed by the release management team to support the approach. This tool was named \textit{Reno} and it can be seen as a release notes manager that encourages developers to provide more detailed and accurate release notes for each software deliverable being released.
+
+%% Details of reno and Micro tagging 
+%% Grammaly 12 Jan 2017
+
+Also Git has the ability to tag specific points in source-code history. These Git tags point out to a specific commit and thereafter do not change even when the corresponding Git branch moves on. While commits are identified by unique hash values,  tags can be identified by textual labels\footnote{See \url{https://git-scm.com/docs/git-tag} more information on the Git tag mechanisms.}· OpenStack contributors use Git tags as mechanisms to define the release points with descriptive names such as ``v3.1.4b1'', ``tc:approved-release'', ``:ref:`tag-vulnerability:managed`'' or ``:`tag-stable:follows-policy`''\footnote{See \url{https://governance.openstack.org/tc/reference/tags/index.html} for an overview of these tags.}. \begin{newStuff}
+As pointed out before by Poo-Caamaño (2016) \cite{poo2016release} that also studied release management at OpenStack, the recent replacement of the big 'official release' by a tagging system where each sub-project is marked as 'release managed' by the technical committee addresses possible misconceptions from the distributors, integrators, and operators of OpenStack. After all, the concept of 'official release” can lead to wrong assumptions and its users can assume incorrectly that all of these 'official release' sub-projects shared the same level of quality and maturity \cite [p111]{poo2016release}. The concept of an integrated 'official release' worked better while OpenStack was smaller project, but as the ecosystem grow the definition of a final and complex modular system  becomes blurry, the tagging approach is in this sense forces the users of OpenStack to not look at the new release of OpenStack but at the new coordinated releases of OpenStack.  
+ \end{newStuff}
+ 
+
+
+
+
+With the Liberty release, many different OpenStack project teams were invited to use Reno for providing release notes that are directly attached to the Git source code tree. This implies that a patch can include a Reno file, or a series of them, containing textual information explaining what is the expected impact of this particular incremental change.  The standardized use of release notes as orchestrated by Reno, as well as the use of Git tags that are signed by centrally managed OpenPGP keys maintained by the OpenStack Infrastructure team, pave the way for the overall standardization, access control  and automation of cross-project release management processes. 
+%% More on reno to close the tools subsection 
+%% Grammaly 12 Jan 2017
+%In order to better elucidate the micro-tagging approach and the use of Reno release notes manager, we conclude our review of the infrastructural tools that support release management at OpenStack 
+
+There are several important sections that a release description as a Reno file can include, to become automatically associated with the release version based on the Git tags applied to the repository. With this approach, it is not necessary to track changes manually using a bug tracker or other tool,  as release notes are stored next to the code being developed and encoded in a human and machine readable way. Developers can write down their release notes at any time (hopefully while the understanding of what was developed remains fresh),  store them close to the artifacts being developed, and automatically deliver them to the release management team when appropriate.  
+
+%% Grammaly 12 Jan 2017
+    
+    \begin{figure}[bh]
+    \footnotesize
+\begin{description}
+
+%% Grammaly 12 Jan 2017
+
+\item[prelude]
+    General comments about the release. Should succinctly announce what was developed to be included in the release. Should also mention major impacts and interdependencies with the OpenStack totality. 
+    
+\item[features]
+    Details the list of new major features in the release.
+    
+\item[issues]
+    Includes a list of known issues in the release. For example, if a new driver is experimental or known to not work in some cases, it should be mentioned here. For features that are not crucial, it might be better to release on schedule, document known issues and fix them later. 
+
+\item[upgrade]  Should be provided when a  patch has an UpgradeImpact tag. Used for instance when a database changes or needs a deployer modification (e.g., a migration). Also when a configuration option changes (e.g., depreciation, removal or modified default). Overall, any patch that requires action by a deployer should include this 'upgrade' section. 
+
+ \item[critical]  If the patch fixes a critical bug (as classified in the Launchpad), it should be reported here. 
+
+\item[security] If the patch fixes a known vulnerability, it should be reported here.  
+
+
+\end{description}
+
+\vspace{0.2cm}
+
+\raggedright{\sffamily  \par \textbf{Release notes in OpenStack} - Different sections of a Reno file. }
+    \end{figure}
+
+    
+
+
+
+
+
+
+
+
+
+%% Grammaly 12 Jan 2017
+\begin{table}
+\centering
+\renewcommand{\arraystretch}{1.5}
+\caption{Tools supporting release management at OpenStack.\label{t:tools}}
+\begin{tabularx}{\textwidth}[]{
+m{\dimexpr.160\linewidth-2\tabcolsep-1.3333\arrayrulewidth}
+m{\dimexpr.400\linewidth-2\tabcolsep-1.3333\arrayrulewidth}
+m{\dimexpr.440\linewidth-2\tabcolsep-1.3333\arrayrulewidth}
+}
+\toprule
+Tool & Tool description & Roles\\
+\midrule 
+Launchpad & Collaboration and hosting platform & Bug tracking and discussion of blueprints.  \\ 
+Story board & Task tracker  &  Task tracking across multiple teams, repositories, and branches.  \\
+Git & Distributed code repository system  & Hosting, version and revision control.\\ 
+GnuPG & Hybrid-encryption software & For annotating and signing Git tags. \\
+Gerrit &  Code review system & Orchestrates peer review of proposed code changes over Git.\\
+Jenkins & Automation server  & Runs jobs of continuous iteration testing.  \\
+Zuul &  Pipeline oriented gating and automation  & Acts as a configurable gateway between Gerrit and Jenkins.  \\ 
+Logstash & Pipeline and oriented analysis of jobs  & Analysis of logs. \\
+% Graphana & 
+Etherpad & Collaborative online editor (real-time) &  For each stable branch, it aggregates information on current bugs, failures of the continuous integration jobs, known problems/issues, and on recently closed problems/issues as well. \\
+Reno & Release notes manager. &  Manages release notes in a standardized format.\\ 
+Sphinx & Documentation and specification generator. & Integrates with Reno to generate reports containing release notes for specific branches and versions.\\
+Mailman & Software for managing electronic mail discussion and e-newsletter lists &  Official channel for discussion among developers. Results from code reviews, continuous integration testing, and code-merging are delivered by software bots via e-mail.  \\
+Freenode & IRC & Textual discussions of developer across different channels (achievable material).\\ 
+MediaWiki & Wiki software & Collaborative documentation.\\ 
+
+
+ \bottomrule
+\end{tabularx}
+\end{table}
+
+
+
+\iftoggle{showOrgDescription}{%
+
+\subsection{Release management at OpenStack - organizational design supporting it}
+
+
+\todo{Check this is congruent with \url{https://docs.openstack.org/project-team-guide/release-management.html} }
+
+
+``Each project team should designate a stable branch cross-project liaison as the main point of contact for all stable branch support issues in the team. If nobody is specifically designated, the PTL will be assumed to cover that duty'' \url{https://docs.openstack.org/project-team-guide/stable-branches.html#support-phases}
+
+
+
+``o Gerrit should be reviewed and seconded by two project-specific stable maintenance team members before it is approved. Where a team member has backported a fix, a single other +2 is sufficient for approval.'' \url{https://docs.openstack.org/project-team-guide/stable-branches.html#support-phases} 
+
+
+\begin{itemize}
+ \item Release management team 
+ \item Cross project liason 
+ \item Infrastructure team 
+ \item QA team
+ \item PTL 
+ \item Technical Committee (TC)
+\end{itemize}
+
+
+Such tags rely on GPG 
+
+``For other changes within an existing project team, like addition of a new git
+repository or self-assertion of a tag, we use lazy consensus. If there is no
+objection posted one week after the change is proposed (or a significant new
+revision of the change is posted), then the change can be approved by the
+chair.
+
+One exception to this would be significant team mission statement changes,
+which should be approved by a formal vote after an in-meeting discussion.
+
+In corner cases where the change is time-sensitive (like a deliverable
+reorganization which blocks a release request), the chair may fast-track the
+change, but should report on that exception at the next TC meeting.
+''
+
+\url{https://git.openstack.org/cgit/openstack/governance/tree/reference/house-rules.rst}
+
+
+
+
+As in http://git.openstack.org/cgit/openstack/releases/tree/README.rst
+
+Who is Responsible for the Release?
+===================================
+
+The release team is responsible for helping to clearly signal the
+nature of the changes in the release through good version number
+selection.
+
+The project team is responsible for understanding the implications for
+consuming projects when a new release is made, and ensuring that
+releases do not break other projects. When breaks occur, the project
+team is responsible for taking the necessary corrective action.
+}
+% Do not show the organizational description
+{}
+
+
+\section{Discussion}
+
+% \DiscussionTipsEmpiricalPaper
+
+%% \subsection{What we did, and what is the  value added of this research}
+
+% Grammaly lite checked 16 Jun 2017
+In this paper, we investigated release management at OpenStack while paying special attention to its processes and infrastructural tools. Our findings complement the current body of empirical knowledge addressing release management in the context of open source software \cite{michlmayr2015and,Poo-Caamano2017}. As release management practices are connected to other software engineering practices such as `planning, code-reviewing, continuous integration, quality assurance, documentation and translation, our results might connect with other issues of interest in the Software Engineering and Free/libre/open source (FLOSS) research communities. 
+
+% Scribendi lite checked 
+Prior work has already inquired on OpenStack release management issues (see \cite[pp 10-11]{teixeira2015lessons} for work bringing up collaboration issues and \cite[pp 80-82]{poo2016release} for work pointing out communication issues). However, and to the best of our knowledge, this is the first paper paper that explicitly aims at describing how a large and complex open source software ecosystem refined its release model over time. We longitudinally followed OpenStack technology from its inception at NASA to its bootstrap as an open-source project and its more mature phase characterized by a liberal time-based release strategy where multiple cycles co-exist.
+
+%\subsection{Key results and integration with prior literature}
+
+%\subsubsection{What is confirmed}
+
+
+% Scribendi lite checked 
+When integrating with prior related literature, our results confirm the pivotal role of freezes within the release management process (cf. \cite{fitzgerald2011open,Anand2017}).
+%
+The use of the three freeze mechanisms by the release management team (i.e., “FeatureFreeze”, “SoftStringFreeze”,  and “HardStringFreeze”) encourages developers to progressively change their production focus from new developments to integration and stabilization of that what was developed so far (see \cref{t:3freezes}). 
+% 
+In our case, the use of freezes forces developers that want to see their work in the next release to make three major shifts in the focus of the production: (1)  from the individual component level to the overall integration as a whole, (2) from developing new features to ensuring their landing, integration and stabilization, and (3) from individual work, or collaboration within smaller teams, to coordination across the overall community. Our investigation found the use of freezes particularly helpful for the practice of user-interface testing automation (see \Cref{sc:tools} for a short account on the efforts of the Horizon project team to automate the testing of dynamic HTML user interfaces). 
+
+%\subsubsection{What we extend}  
+
+
+% Explain what is liberal 
+% Explain the several release cycles 
+
+
+% Scribendi lite checked 
+Also, in the light of prior work, the  release management process of OpenStack can be considered a hybrid of feature-based and time-based release management \cite[pp 23]{wright2012release}. In addition to regular releases every six months, OpenStack also attempts to introduce new features at each regular release. At the planning stage, leaders of each project team choose a set of features  for the  next release. However, if these features are not stable enough to be included in the upcoming release, they will be left out by the cross-project release management team. 
+
+% is this sentence below in the correct place? Somehow I expected to learn more about how it constrains. Did you mean that: In this way, release management constrains the evolution of the integrated whole
+As pointed out recently, release management constrains the evolution of the integrated whole  \cite[pp 4]{poo2016release}.
+ 
+ 
+
+
+
+% \subsubsection{What we see or propose as new}
+
+% Grammaly checked 17 Jan 2017
+By investigating both the release management processes and the tools that support it at OpenStack, we found both the micro-tagging approach and the Reno release notes manager as novel and distinctive from other open source release management cases \cite[c.f.,][]{michlmayr2015and,Poo-Caamano2017}. Future research could report on how the OpenStack technical committee and the release management team employ repository tags to signal that a certain component of OpenStack was release managed (an indicator of quality), that certain component can be marketed as a core component of OpenStack, or that a given project followed a suitable design or achieved a high level of diversity in the affiliation of contributors (an indicator of a healthy collaborative project).  Assuming that others might be interested in Reno as a novel open source tool supporting release management processes, future research should explore whether the following characteristics of Reno could bring value to the practices of release management in particular and software engineering in general. 
+
+\begin{itemize}
+ \item Release notes are automatically associated with the release version based on the repository tags applied to the repository. It is not necessary to track changes manually outside the repository (e.g., in a bug tracker, a spreadsheet or other tool).
+ \item Release notes are encoded within the source code repository at the side of correspondent features source code. This means that release notes can be written when the code changes within the same development environment.
+ \item Release notes go through the same review process used for managing code and other documentation changes.
+ \item Release notes are encoded in a standardized format. Notes are organized into logical groups based on whether they describe new features, bug fixes, known issues, or other topics of interest to deployers, users, and developers. 
+ \item Prior to delivering new features to the release management team, release notes can be automatically aggregated and documented from the source code repository with Reno.  Developers only need to run a script that invokes Reno. 
+\item Release notes can be easily located by project, release series, branch, earliest revision, and date, among other parameters.  Developers can search for specific sets of release notes and sections. 
+\end{itemize}
+
+% Scribendi lite checked 
+Adding to prior work, and in addition to considering the overall release management process of OpenStack as a hybrid of feature-based and time-based release management, we also consider it as quite liberal. We found the OpenStack release management process to be liberal in multiple aspects: 
+\begin{itemize}
+ \item Liberal as the official releases dates, the milestones, and the freezes are not strict but negotiated and applied by the release management team in cooperation with the different project teams. In an analogy with trains, a given train might be scheduled to depart at a given time, nevertheless, they might come a bit before or a bit later due to a number of organizational or technical issues. Still, the train schedules remain a useful artifact for planning purposes. 
+ \item Liberal as different teams (e.g., testing, drivers, documentation, and translation) are granted with extra days, or even a few weeks, to deliver their own releases. Releasing depends on the context, nature and interdependencies of the artifacts being developed. Examples include testing how a certain hardware driver complies with new developments, developing a new library that relies on external APIs and translating recent documentation to another language. 
+\item Liberal as feature freeze exceptions are granted by the release management team and the technical committee in exceptional cases (e.g., for landing a release critical fix).  These feature freeze exceptions need to be properly discussed and documented before being granted, controlled and monitored. 
+
+\item Liberal, as well, as OpenStack started more recently recommending four different release management models. Even if most of the models trail the common six-month release 'train', the OpenStack governance recognized over time the need for certain teams and individuals to manage their own release strategy independently. 
+
+\end{itemize} 
+
+
+%\subsection{Theoretical contributions}
+
+% Grammaly lite check 15 Jan 
+
+Given the complexity of the OpenStack software ecosystem in general and the historical evolution of its release management processes in particular, we opted to keep our main research efforts as descriptive. Our main contribution is then a straightforward longitudinal account of the release management practices at OpenStack, an account that, to our belief,  can bring issues of interests to the Software Engineering and Free/libre/open source (FLOSS) research communities. Both academics and practitioners can now assess the similarity or dissimilarity of the release management processual patterns of OpenStack with other projects - this kind of comparison can lead to lessons learned or even to improvements on the way organizations release software.  
+
+% Grammaly lite check 15 Jan 
+We have studied, gained understanding and described many of the release management processes and tools with OpenStack. We have given our own interpretations of the release management phenomena in the context of OpenStack, that is, in an open source software ecosystem that has so far continuously grow in size and complexity. Our most striking finding is that the evolution of release management processes at OpenStack  has led to the co-existance of not one but several release management cycles. Since October 2016, the OpenStack release management formally recognize four different release management models. 
+
+We can conclude that as a software ecosystem grows in size and complexity, its developers might follow not one but several release management cycles. This conclusion calls for further research investigating why, how, and when projects should implement multi-cycle release management strategies. In the particular case of OpenStack, it remains unexplored whether the formal co-existence of four different release management models has had a positive impact on the amount or quality of the software being contributed by its developers. Future research addressing multi-cycle release management strategies might be a fruitful avenue in Software Engineering. So far, we know that smaller open source projects at early stages traditionally announce releases once new features are implemented. We also know that large and successful open source projects benefited with the implementation of time-based release schedules \citep{michlmayr2015and}, but so far little is known about projects where multiple release models co-exist with each other as we found in our case. Future quantitative investigation unveiling causal relationships between the socio-technical characteristics of teams and artifacts (e.g., sub-projects team size, application vs. library, modularity, and coupling among many other socio-technical characteristics) and the different release management models, are,  in our view, research efforts worth being explored.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+ 
+
+
+
+% \subsection{Practical contributions}
+
+% \subsection{Limitations}
+
+% Grammaly lite checked 
+
+% \subsection{Future research}
+
+% Grammaly checked 17 Jan 
+% Besides the findings discussed above, our engagement with release management in open source software projects remains at a preliminary stage. 
+At this point, we are not attempting to evaluate, appraise or compare the captured release management processes of OpenStack. Our focus was on describing the most salient release management patterns by deeply studying them. Besides leading to descriptive findings, our investigation of OpenStack opens multiple avenues for future research. 
+
+% Grammaly checked 17 Jan 
+An obvious step is to move from a single case to a multipl case study design. Future research could analyze and juxtapose the processual practices of release management across multiple cases \cite{michlmayr2015and,poo2016release}. Both within OpenStack, or in other projects, digital trace data generated by the upstream integration processes, the source code repositories, the code review systems, and the bug trackers could be used to triangulate the authenticity of the conceptual release management models in practice. \footnote{See \cite{howison2012validity,hedman2013digital,freelon2014interpretation,ruths2014social,Crowston2017} 
+% See also hedman2013digital for others  ackland2013web,
+for recent discussions on validity issues regarding the collection and analysis of digital trace data.} 
+Also, it remains unknown why and how multiple release cycles co-exist in large and complex software ecosystems. Another salient issue pertains to the management of information regarding release management (e.g., should release management notes be stored at the side of the source code in the repository, or should new systems be developed for better structuring all information regarding release management).
+
+% Grammaly checked 17 Jan 
+Given the co-existence of multiple avenues for future research, and as we intend to continue our engagement with the OpenStack community, we plan to address some of the current challenges faced by the OpenStack release management team. The OpenStack community could benefit from better co-release practices with its end users and deployers, because their feedback often comes too late to shape the next immediate release cycle. Better practices could also reduce the large cognitive load that first time, part time and occasional contributors face releasing their software, because release management adds a set of discouraging barriers for contributors that are not that familiar with the overall research management processes.  Engaged empirical research taking a critical stance on these practical issues could lead to improvements in the release management process and overall organizational design of the OpenStack ecosystems.\begin{newStuff}While so far we had focused on processes and tools, future research should also explore the organizational design supporting and shaping release management at OpenStack. Along these lines, future research could engage with theoretical frameworks such as the Conway's mirroring hypothesis \cite{kwan_et_al2012conway}, socio-technical congruence \cite{cataldo_et_al2008stc} or socio-materiality \cite{Orlikowski_and_Scott2008} to explore release management from an entangled organizational and technical perspective. After all, it is expected that the organizational design supporting release management is shaped by the artifacts being developed (e.g., code and documentation) and the other way around. The use of such theoretical frameworks challenges researchers to not separate organizational and technical issues from each other but build knowledge while intertwining them.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    \end{newStuff}
+
+
+% IDEA Conway law and the socio-technical congruence framework anf release management 
+
+  
+% Based on a doctoral dissertation  http://www.hyrumwright.org/papers/dissertation.pdf
+
+% TODO We are not in any point evalation the 
+% 
+% 
+% 
+% 
+% TODO such freezes slilts along  community efforts along two lanes. Some fix an releases and other can continues developing. 
+% In other words, such freezes force developers that want to see their work in the next release to make three big shifts: (1) from the individual component level to the overall integration as a whole, (2) from developing new features to insuring its landing, integration and stabilization, and (3) from individual work or collaboration within smaller teams to coordination across the overall community.  
+% 
+% TODO ow release management affected the pace and sequence of quality and quantity. 
+% Other lessons lessons could be learned by comparing this release projects. 
+% Future reseach look qunaitiativeluy how this model captured here at the cocneptual level looks quanitative in practice when looking quatitative usion code-metris and qualitu-metrics from tje.  
+% 
+% TODO 
+% Its a hybrid model see Hybrid Model (see \cite[pp 23]{wright2012release}). 
+% % http://www.hyrumwright.org/papers/dissertation.pdf
+% 
+% TODO 
+% Release management is complex process that is interweneed with many other processes. 
+% 
+% Explore more deeply the challenges of implemeting a time-based release while the ecosystem grow 
+% 
+% 
+% TODO 
+% Discussing release management in insullation 
+% is challenging. It's linked with project management, dev methodlogies, quality asureance, the teams that do the product/service marketing of the new releases.  
+% 
+% Release team constrains.
+
+
+
+%Also organizational is tools. 
+% 
+% Release management raises many question <-- is a complex issues cite 
+% \url{http://www.eweek.com/cloud/openstack-moves-from-integrated-release-to-big-tent-model.html}
+
+
+
+
+% Existing code bases and the West paradox of firms investment in open source software
+
+% Map the freezes od Fitzegerald s
+
+% dabbish2012social multi-project repositot
+
+
+% Existing code bases and the West paradox of firms investment in open source software
+
+
+
+
+
+%future reseach tools and organizations. 
+
+%Future research should assess how release management affected the pace and sequence of 
+%quality and quantity. 
+
+% Release team constrains.
+
+\section{Conclusions}
+
+
+% Scribendi lite checked 17 Jan 
+OpenStack implemented a time-based release strategy that trails a six-month cycle. Each cycle comprehends a planning stage, an implementation stage and freeze, stabilize and launch stage.
+In the middle of each release cycle, the community relies on three freezes (i.e., “FeatureFreeze”, “SoftStringFreeze” and “HardStringFreeze”) that encourage developers to change their production focus from the development of components to the overall upstream integration and stabilization of components as a whole. This change affects much the work and communication patterns of the community. The implemented release management process exhibits hybrid characteristics of both feature-based and time-based release management strategies as the process is both feature and time oriented. Moreover, the implemented release cycle is quite liberal and in this way open to changes and flexible to adaptation. In particular contexts, different project teams across the community are allowed to work around the default six months release cycle. Even when the project advocates a six month release cycle, different release cycles do co-exist across the different OpenStack sub-projects.
+
+% Scribendi lite checked 17 Jan 
+The implementation of a liberal time-based release strategy is a complex process that intertwines with many other software development processes. In the case of large and complex open source software ecosystems, this requires the support of a well suited organizational design as much coordination is needed. Moreover, the process constrains the evolution of the integrated core and depends heavily on many software tools that make it possible. These tools help, for example, version control, revision control, continuous upstream integration, continuous upstream testing, and configuration management. Besides its acknowledged benefits (see \cite{michlmayr2012time}), the implementation of a liberal time-based release strategy is a challenging cooperative task interweaving people with processes and technology.
+
+
+\iftoggle{showLiteratureDigests}{%
+
+
+\begin{DL-LiteratureDigestion}
+
+% Digest CITE, DOI/URL/FILE/BIBTEX/PUB
+\begin{DL-Digest}
+{Michlmayr, M., Fitzgerald, B., \& Stol, K. J. (2015)}
+{DOI: 10.1109/MS.2015.55}
+{10.1109SlashMS.2015.55.digest.tex}
+{michlmayr2015and}
+{Why and how should open source projects adopt time-based releases?. IEEE Software, 32(2), 55-63} 
+\end{DL-Digest}
+
+
+% Digest CITE, DOI/URL/FILE/BIBTEX/PUB
+\begin{DL-Digest}
+{Poo-Caamaño, G. (2016)}
+{URL: https://dspace.library.uvic.ca/handle/1828/7648}
+{FLOSSreleaseManagementDissertation.digest.tex}
+{poo2016release}
+{Release management in free and open source software ecosystems (Doctoral dissertation, University of Victoria)} 
+\end{DL-Digest}
+
+
+\end{DL-LiteratureDigestion}
+
+
+
+
+
+
+% Literature digest of  DOI: 10.1109/MS.2015.55 
+% Michlmayr, M., Fitzgerald, B., \& Stol, K. J. (2015). Why and how should open source projects adopt time-based releases? IEEE Software, 32(2), 55-63.
+
+%\input{10.1109SlashMS.2015.55.digest.tex}
+
+
+
+
+
+
+
+
+
+}{}% do not show literature digests}
+ 
+% \begin{table}
+% \caption{This is the example table taken out of {\it The
+% \TeX{}book,} p.\,246}
+% \begin{center}
+% \begin{tabular}{r@{\quad}rl}
+% \hline
+% \multicolumn{1}{l}{\rule{0pt}{12pt}
+%                    Year}&\multicolumn{2}{l}{World population}\\[2pt]
+% \hline\rule{0pt}{12pt}
+% 8000 B.C.  &     5,000,000& \\
+%   50 A.D.  &   200,000,000& \\
+% 1650 A.D.  &   500,000,000& \\
+% 1945 A.D.  & 2,300,000,000& \\
+% 1980 A.D.  & 4,400,000,000& \\[2pt]
+% \hline
+% \end{tabular}
+% \end{center}
+% \end{table}
+%
+%\begin{theorem} [Ghoussoub-Preiss]\label{ghou:pre}
+%\end{theorem}
+%
+%\begin{definition}
+%\end{definition}
+%
+
+
+\iftoggle{finalToSubmit}{%
+}{
+
+\section{concepts}
+
+Feature 
+Time 
+Release 
+Trunk
+Revision control system 
+Branch 
+Commit 
+%https://en.wikipedia.org/wiki/Trunk_(software) 
+
+
+
+
+\section{data}
+
+Very important youtube video on release management 
+\url{https://www.openstack.org/summit/tokyo-2015/videos/presentation/herding-cats-into-boxes-how-openstack-release-management-changes-with-the-big-tent}
+
+On the big tent concept
+\url{http://www.eweek.com/cloud/openstack-moves-from-integrated-release-to-big-tent-model.html}
+
+\url{https://www.openstack.org/summit/vancouver-2015/summit-videos/presentation/the-big-tent-a-look-at-the-new-openstack-projects-governance}
+
+\url{http://docs.openstack.org/project-team-guide/release-management.html}
+
+\url{https://releases.openstack.org/reference/release_models.html}
+
+\url{https://wiki.openstack.org/wiki/Branch_Model}
+
+\url{https://wiki.openstack.org/wiki/DiabloReleaseSchedule}
+
+\url{https://www.openstack.org/software/roadmap/}
+
+
+
+Very important blog
+
+\url{https://fnords.wordpress.com/2011/07/01/time-based-good-for-community/}
+
+
+ 
+
+
+
+\section{decision three}
+
+Infrastructure software
+
+Continous integration testing
+
+QA team opinion of the release.
+
+
+Are you an internet website?
+
+Are you in a go-live?
+
+
+\section*{List of abbreviations}
+
+Git
+
+Trunk
+
+Branch
+
+}
+
+
+\section{List of abreviations}
+
+% load the acronyms
+\input{./acronyms.tex}
+
+
+
+\section*{Declarations}
+
+\begin{backmatter}
+
+\section*{Author's information}
+
+\draftp{To be added later if article gets accepted.}
+
+\section*{Competing interests}
+  The author declares no competing interests. 
+  
+
+\section*{Acknowledgments}
+
+\draftp{To be added later if article gets accepted.}
+
+% Also to Karry for reviewing propositions 
+% Also to Tingting and Salman mian with who the idea of mining 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                  The Bibliography                       %%
+%%                                                         %%
+%%  Bmc_mathpys.bst  will be used to                       %%
+%%  create a .BBL file for submission.                     %%
+%%  After submission of the .TEX file,                     %%
+%%  you will be prompted to submit your .BBL file.         %%
+%%                                                         %%
+%%                                                         %%
+%%  Note that the displayed Bibliography will not          %%
+%%  necessarily be rendered by Latex exactly as specified  %%
+%%  in the on-line Instructions for Authors.                %%
+%%                                                         %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% if your bibliography is in bibtex format, use those commands:
+\bibliographystyle{bmc-mathphys} % Style BST file
+\bibliography{references,bib-database/release-management,bib-database/OpenStackResearch,bib-database/JoseTeixeiraPub}      % Bibliography file (usually '*.bib' )
+
+
+% or include bibliography directly:
+% \begin{thebibliography}
+% \bibitem{b1}
+% \end{thebibliography}
+
+\ifTaFigOnEnd  
+
+
+\section*{Figures}
+
+
+% \begin{figure}[ht!]
+%  %\centering
+%  %\includegraphics[keepaspectratio=true,width=\linewidth]{./Figures/CompetingModels.pdf}
+%  % CompetingModel.pdf: 640x623 pixel, 72dpi, 22.58x21.98 cm, bb=0 0 640 623
+%  \caption{\csentence{OpenStack firms competing for the same revenue streams} 
+%  The network nodes represent top firms contributing to the OpenStack project while
+%  the edges connect firms that compete for the same revenue model.}
+%  \label{fig:CompetingRevenues}
+% \end{figure}
+% 
+
+
+
+
+\else 
+
+\fi
+      
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                               %%
+%% Tables                        %%
+%%                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Use of \listoftables is discouraged.
+%%
+
+\ifTaFigOnEnd
+
+\section*{Tables}
+
+\else 
+
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                               %%
+%% Additional Files              %%
+%%                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\pagebreak
+
+%\section*{Additional Files}
+
+%  \subsection*{Additional file 1 --- Figures to be included}
+  % Figures.pdf include all article figures 
+  %\includepdf[pages=-]{Figures}
+  
+%  \subsection*{Additional file 2 --- Tables to be included}
+  %  Tables.pdf include all article tables
+  %s\includepdf[pages=-]{Tables}
+    
+    
+    
+\end{backmatter}
+
+
+\end{document}

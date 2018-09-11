@@ -1,0 +1,89 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%  For keeping what is learned when reading literature / published %%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Author Jose Teixeira <japolinario@gmail.com> 20 Oct 2016 
+
+
+\RequirePackage{xcolor}
+\RequirePackage{pdflscape}
+\RequirePackage{geometry}
+%\RequirePackage{showframe}
+\RequirePackage{marvosym}
+
+%\RequirePackage{tikz-er2}
+
+\usepackage[many]{tcolorbox}
+\usepackage{marginnote}
+\usepackage{framed}
+\usepackage{float}
+
+
+% Make nice boxes 
+%# 2 is color 
+%# 3 is title  
+\newtcolorbox[]{DigestLiteraturebox}[3][]
+{
+  colframe = #2,
+  colback  = #2!10,
+  coltitle = #2!20!black,  
+  fonttitle=\bfseries\color{green},
+  title    = \footnotesize  #3,
+  #1,
+}
+
+
+
+
+
+
+\newenvironment{DL-LiteratureDigestion}
+    {\color{blue} \section*{Literature digestion}
+    
+    We include in here some digests of prior published knowledge. 
+    
+    }
+    { 
+    }
+    
+
+% Make a block for single digest / paper 
+% 1 the cite --- e.g.:  Michlmayr, M., Fitzgerald, B., \& Stol, K. J. (2015)
+% 2 the doi or url  --- e.g.: DOI: 10.1109/MS.2015.55 
+% 3 the file to be included --- e.g.:  10.1109SlashMS.2015.55.digest.tex
+% 4 the correnspondent bibtex entry --- e.g.: michlmayr2015and
+% 5 the publication in long format --- e.g.:  Why and how should open source projects adopt time-based releases?. IEEE Software, 32(2), 55-63 
+\newenvironment{DL-Digest}[5]
+{ 
+
+\clearpage 
+
+\newgeometry{margin=0.5cm, showframe}
+\begin{landscape}
+\pagestyle{empty}
+
+\begin{DigestLiteraturebox}{blue}{Literature digest of  #2}
+ \cite{#4} #1. #5
+\end{DigestLiteraturebox}
+
+\subsection*{Digestion of  #2}
+
+\input{#3}
+}
+{
+\end{landscape}
+\restoregeometry
+%\clearpage
+\clearpage
+}
+
+
+
+
+\newcommand{\DLnote}[1]{{\color{black} \fbox{ \parbox{0.8\linewidth}{#1}}\vspace{1cm}}}
+
+\newcommand{\DLquote}[1]{{\noindent \hspace{0.2cm}  \Rightscissors \hspace{0.2cm}  \color{black} #1 } \vspace{0.3cm}}
+
+\newcommand{\DLused}[1]{{-  \color{green} Used in #1 -} \\ }
+
+\newcommand{\DLnotUsed}{{-  \color{red} Not used -} \\ }

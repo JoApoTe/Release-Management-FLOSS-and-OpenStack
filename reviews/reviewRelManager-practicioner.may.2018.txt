@@ -1,0 +1,73 @@
+Hi! I read the "Release management at OpenStack - infrastructural tools
+supporting it" section this morning and here are my comments:
+
+"Among others, developers extensively rely on LaunchPad for
+Blueprints, Sphinx for specifications and StoryBoard for task tracking."
+
+Launchpad and StoryBoard are actually used for the same thing
+(blueprint, bug and task tracking). Launchpad was used originally, and
+we are migrating projects to use StoryBoard instead.
+
+"Since the early days of OpenStack that Git [21] plays an impor-
+tant role in release management at OpenStack."
+
+OpenStack started by using Bazaar (bzr) as its distributed version
+control system. That was replaced by git after a few releases.
+
+You mention the YAML description of releases: it might be useful to
+mention that this YAML is used by our automation to actually do the
+tagging in git automatically (and sign the tags with the Release
+Automation GPG key). No human is involved past the review of that YAML
+description.
+
+"In other words, since the Liberty release, OpenStack software releases
+are not seen as a selection of core repositories, but as code ’tagged’
+by the Technical Committee (TC) across all the repositories of OpenStack"
+
+You seem to confuse the governance tags (which are a set of labels that
+the TC applies to official teams and deliverables in OpenStack) with the
+git tags (which are used to apply a version to a specific commit in the
+git history). Those are two separate things. The TC maintains the list
+of official deliverables and repositories, and it did not change much
+before or after Liberty.
+
+"While in many other projects developers submit more atomic commits or
+patches for review, in the case of OpenStack developers submit Git
+branches to be reviewed (more bulky units)."
+
+This is a bit misleading: patches in Gerrit are atomic patches (while
+GitHub, for example, forces you to submit a branch in a pull request).
+If you submit multiple commits, git-review will translate that patch
+series into separate changes to be reviewed.
+
+"The process is quite straightforward: developers implement
+new features in their own local Git branch, commit their changes locally
+and then simply invoke the git review subcommand that will submit the
+’patchset’ to Gerrit."
+
+A patchset in Gerrit is just a version of version of the change
+submitted for code review. The git review subcommand will submit all the
+commits in the local Git branch as a patch series of multiple individual
+changes that depend on each other.
+
+"In OpenStack, test automation is implemented in Jenkins and Zull."
+
+It's "Zuul". Note that we do not use Jenkins anymore. Nodepool is used
+to provision test nodes, and Zuul leverages Ansible to execute the tests
+on its test nodes.
+
+"OpenStack contributors use such Git tags mechanisms to define the
+release points that can be tagged with descriptive names such as
+“v3.1.4b1”, ” “tc:approved-release”, “:ref:‘tag-vulnerability:managed‘”
+or “:‘tag-stable:follows-policy‘” [41] ."
+
+Same confusion as above between governance "tags"
+(vulnerability:managed, stable:follows-policy) and git tags (v3.1.4b1).
+We only use git tags for versioning, so I think this sentence is a bit
+useless.
+
+Hope it helps, let me know if you have questions :) Please send me the
+final paper when it's ready, I'll read it with pleasure.
+
+-- 
+Thierry Carrez (ttx)

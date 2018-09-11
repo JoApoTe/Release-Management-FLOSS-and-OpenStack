@@ -1,0 +1,385 @@
+% TODO Look and ~/ownCloud/Documentation/Research/PHD Thesis writing
+% TODO Add special issues on FLOSS documented somewhere -- Look also in ICIS paper, JISA 2017, JISA 2015 and openness  
+% TODO Add review papers on FLOSS documented somewhere 
+% TODO Implement \FTBooksOnFLOSS
+% TODO Implement \FTBooksOnFLOSSbook_chapters 
+% TODO Add FLOSS dissertations 
+
+\RequirePackage{etoolbox}
+\RequirePackage{tabularx,array,booktabs}
+
+
+
+
+% \RequirePackage{usebib}
+% To refer directly to the title of a cited article or book without directly typing it in.
+% The package must be loaded after hyperref , but it doesn't require it.
+
+
+  
+
+\newrobustcmd{\FTspecialIssuesOnFLOSS}{{\huge \bfseries Known special issues on FLOSS:}
+
+\vspace{1cm}
+
+\begin{tabularx}{0.7\textwidth}[]{lcl}
+\toprule 
+\textbf{Year} & \textbf{Discipline} & \textbf{Special issue} \\
+\midrule
+2001 & IS & \citep{Fitzgerald_and_Feller2001} \\
+2002 & IS & \citep{Fitzgerald_and_Feller2002} \\
+2006 & Management & \citep{VonKrogh_and_VonHippel2006} \\
+2006& SE & \citep{Scacchi_et_al2006} \\
+2010 & IS & \citep{Crowston_and_Wade2010} \\
+2013 & Innovation studies & \citep{VonKrogh_and_VonHippel2003si} \\
+2017 & SE & \citep{Steinmacher_et_al2017} \\
+\bottomrule 
+\end{tabularx}
+
+\vspace{1cm}
+
+}
+
+
+\newrobustcmd{\FTreviewArticlesOnFLOSS}{{ \huge \bfseries  Known review articles on FLOSS:}
+\vspace{1cm}
+
+\begin{tabularx}{0.7\textwidth}[]{lcl}
+\toprule 
+\textbf{Year} & \textbf{Discipline} & \textbf{Special issue} \\
+\midrule
+1999 & Cross-disciplinary & \citep{Bezroukov1999} \\
+2004 & LIS & \citep{Awazu_and_Desouza2004} \\
+2005 & System Sciences & \citep{Crowston_et_al2005} \\
+2005 & System Sciences & \citep{Fitzgerald_and_Agerfalk2005} \\
+2006 & IS & \citep{Fitzgerald2006} \\
+2007 & IS & \citep{VonKrogh_andSpaeth2007} \\
+2006 & SE & \citep{Osterlie_and_Jaccheri2007critical} \\
+2006 & IS & \citep{Niederman_et_al2006framework} \\
+2006 & IS & \citep{Niederman_et_al2006reference} \\
+2006 & IS & \citep{Nelson_et_al2006understanding} \\
+2008 & CC & \citep{Crowston_and_Howison2008} \\
+2010 & IS & \citep{andreev2010conceptualizing} \\
+2010 & IS & \citep{Aksulu_and_Wade2010} \\
+2011 & SE & \citep{Host_and_Oru2011} \\
+2013 & Innovation studies & \citep{Raasch_et_al2013} \\
+2014 & Innovation studies & \citep{Martinez-Torres_and_Diaz-Fernandez2014} \\
+2015 & IS & \citep{Carillo_and_Bernard2015A_floss_critical_review} \\ 
+2015 & IS & \citep{Agerfalk_et_al2015} \\
+2015 & SE & \citep{Steinmacher_et_al2015} \\
+2017 & Computational Social Science & \citep{Crowston_and_Squire2017} \\
+2017 & IS & \citep{Schlagwein_et_al2017}\\
+\bottomrule 
+\end{tabularx}
+
+
+\vspace{1cm}
+}
+
+
+
+
+
+
+\newrobustcmd{\FTTInfluentialTheoryArticlesOnFLOSS}{{ \huge \bfseries Influential theoretical articles on FLOSS: }
+\vspace{1cm}
+
+\begin{tabularx}{\textwidth}[]{lcll}
+\toprule 
+\textbf{Year} & \textbf{Discipline} &  \textbf{Type} & \textbf{Ref} \\
+\midrule
+  2000 & IS & conceptual & \citep{Feller_and_Fitzgerald2000} \\
+  2003 & Management & conceptual  & \citep{VonKrogh_and_VonHippel2003} \\
+  2004 & Management & conceptual & \citep{Ulhoi2004} \\
+  2006 & System sciences & conceptual & \citep{Crowston_et_al2005} \\
+  2006 & Innovation studies & theory from case & \citep{West_and_Gallagher2006} \\ 
+  2006 & IS & conceptual & \citep{Fitzgerald2006} \\
+  2006 & IS &  theory building and testing & \citep{Stewart_and_Gosain2006}  \\
+  2006 & SE & theorizing success in FLOSS & \citep{Crowston_et_al2006}  \\
+  2007 & SE & theorizing self-organization & \citep{Crowston_et_al2007IST} \\
+  2007 & Cross-disciplinary & theorizing meetings in FLOSS & \citep{Crowston_et_al2007meetings} \\
+  2008 & IS & theory building  and testing & \citep{Feller_et_al2008} \\
+  2008 & IS & theory refining using mix-methods & \citep{Agerfalk_and_Fitzgerald2008} \\ 
+  2009 & IS & theory building and testing & \citep{Fang_and_Neufeld2009} \\
+  2010 & IS & theory building and testing &  \citep{Singh_et_al2011} \\ 
+  2011 & IS & conceptual & \citep{Macredie_and_Kabiru2011} \\
+  2012 & IS & conceptual & \citep{VonKrogh_etal2012} \\
+  2014 & IS & conceptual & \citep{Howison_and_Crowston2014} \\ 
+  2017 & IS & theory building and testing & \citep{Carillo_et_al2017}\\ 
+  
+    
+\midrule
+\bottomrule 
+\end{tabularx}
+
+
+\vspace{1cm}
+}
+
+
+
+\newrobustcmd{\FTArticlesApplyingNetworkScienceOnFLOSS}{{ \huge \bfseries FLOSS articles building upon network science }
+
+\vspace{1cm}
+\begin{tabularx}{\textwidth}[]{lcll}
+\toprule 
+\textbf{Year} & \textbf{Discipline} &  \textbf{Type} & \textbf{Ref} \\
+\midrule
+2004 & SE & Structural analysis Apache modules & \citep{gonzalez_et_al2004} \\ 
+2004 & IS & Agent based modeling of repositories &  \citep{Madey_et_al2003} \\
+2005 & Cross-disciplinary & Structural analysis of bug fixing & \citep{Crowston_and_Howison2005} \\
+2005 & System Sciences & Small world and scale free nets & \citep{Xu_et_al2005} \\
+2005 & Coss-disciplinary & Agent based modeling of repositories &  \citep{Madey_el_al2005modeling} \\
+2006 & Philosophy of Technology & Structural analysis of bug fixing & \citep{Crowston_and_Howison2006} \\
+2011 & IS & Critical review on validity issues & \citep{Howison_et_al2011} \\
+2011 & Cross-disciplinary & Self selection mechanisms & \citep{Shen_and_Monge2011}  \\ 
+2012 & Research methods & Two-mode networks problem-solver &  \citep{Conaldi_et_al2012} \\
+2013 & Network Science & Small world at GitHub and OOhloh.net \\
+2014 & Research methods & Relational event models &  \citep{Quintane_et_al2014} \\
+2014 & Economics & Bipartite networks problem-solver & \citep{Lomi_et_al2014} \\ 
+\bottomrule 
+\end{tabularx}
+
+
+\vspace{1cm}
+}
+
+
+
+%%%%%%%%%%%%% TJJ1 course 
+
+
+\newrobustcmd{\FTTenArticlesForTJJOneDoctoralCourse}{{ \huge \bfseries Selection of 10 theoretical articles for TJJ1 doctoral course}
+
+\vspace{1cm}
+\begin{tabularx}{\textwidth}[]{clcll}
+\toprule 
+ & \textbf{Year} & \textbf{Discipline} &  \textbf{Type} & \textbf{Ref} \\
+
+1 & 2003 & Management & conceptual  & \citep{VonKrogh_and_VonHippel2003} \\
+2 & 2004 & Management & conceptual & \citep{Ulhoi2004} \\
+3 & 2006 & Innovation studies & theory from case & \citep{West_and_Gallagher2006} \\ 
+4 & 2006 & IS & conceptual & \citep{Fitzgerald2006} \\
+% 5 & 2006 & IS &  theory building and testing & \citep{Stewart_and_Gosain2006}  \\
+5 & 2008 & IS & theory building  and testing & \citep{Feller_et_al2008} \\
+6 & 2008 & IS & theory building and testing  & \citep{Agerfalk_and_Fitzgerald2008} \\ 
+7 & 2010 & IS & theory building and testing &  \citep{Singh_et_al2011} \\ 
+8 & 2014 & IS & theory from case  & \citep{Howison_and_Crowston2014} \\  
+9 & 2014 & Innovation studies & systematic review & \citep{Martinez-Torres_and_Diaz-Fernandez2014} \\
+%9 & 2015 & IS & critical review & \citep{Carillo_and_Bernard2015A_floss_critical_review} \\ 
+10 & 2017 & IS & theory building and testing & \citep{Carillo_et_al2017}\\
+\midrule
+\bottomrule 
+\end{tabularx}
+
+
+\vspace{1cm}
+}
+
+
+
+%%%%%%% Citation conventions for FLOSS research 
+
+
+\newrobustcmd{\FTCitationConventions}{{ \huge \bfseries Citation conventions}
+
+
+\begin{itemize}
+ \item Use this tips biography as mush as possible 
+ \item Some publisher allow you to get .bibtex items of a given articles (e.g., Taylor and Fancis)
+ \item Be sure you use \\usepackage\{url\} for avoiding problems with urls
+\end{itemize}
+
+
+\vspace{1cm}
+
+\begin{tabularx}{\textwidth}[]{lp{5cm}l}
+\toprule 
+\textbf{Conference} & \textbf{Bib} & \textbf{Note}\\
+\midrule
+
+AMCIS & {\tiny 
+
+booktitle = {Proceedings of the Americas Conference on Information Systems (AMCIS \textbf{YEAR}) },
+       publisher = {Association for Information Systems},
+       address = {Atlanta, GA, USA},
+	}
+       & Provide AISel url  \\
+       
+ICIS & {\tiny 
+
+booktitle = {Proceedings of the International Conference on Information Systems (ICIS \textbf{YEAR})},
+       publisher = {Association for Information Systems},
+       address = {Atlanta, GA, USA},
+	}
+       & Provide AISel url  \\
+       
+       
+       AMCIS & {\tiny 
+
+booktitle = {Proceedings of the European  Conference on Information Systems (ECIS \textbf{YEAR})},
+       publisher = {Association for Information Systems},
+       address = {Atlanta, GA, USA},
+	}
+       & Provide AISel url  \\
+       
+       
+       MISQ & {\tiny 
+
+  publisher = {Society for Information Management and The Management Information Systems Research Center},
+  address = {Minneapolis, MN, USA},
+  journal = {MIS Quarterly},
+       
+       }
+       & Provide doi/url from ACM dl  \\
+       
+\bottomrule 
+\end{tabularx}
+
+
+\vspace{1cm}
+}
+
+
+
+\newrobustcmd{\FTArticlesOnFLOSSByJournal}{{ \huge \bfseries FTArticlesOnFLOSSByJournal}
+
+TODO implement FTArticlesOnFLOSSByJournal
+
+Example: Key articles published in Management Science 
+
+
+% 
+\begin{table}[h]
+\caption{Key open-source software articles published in \textit{Research Policy}} 
+\begin{tabularx}{\textwidth}[]{lp{5cm}l}
+\toprule
+Index & Title & Ref\\
+\midrule
+O'Mahony2003 & Guarding the commons: how community managed software projects protect their work & \citep{O'Mahony2003}\\
+\bottomrule 
+\end{tabularx}
+\end{table}
+
+
+
+
+
+% 
+\begin{table}[h]
+\caption{Key open-source software articles published in \textit{Technological Forecasting and Social Change}} 
+\begin{tabularx}{\textwidth}[]{lp{5cm}l}
+\toprule
+Index & Title & Ref\\
+\midrule
+West\_and\_Kuk2016 & The complementarity of openness: How MakerBot leveraged Thingiverse in 3D printing & \citep{West_and_Kuk2016}\\
+\bottomrule 
+\end{tabularx}
+\end{table}
+
+
+
+\begin{table}[h]
+\caption{Key open-source software articles published in \textit{Management Science}} 
+\begin{tabularx}{\textwidth}[]{lp{5cm}l}
+\toprule
+Index & Title & Ref\\
+\midrule
+Baldwin\_and\_Clark2006& The Architecture of Participation: Does Code Architecture Mitigate Free Riding in the Open Source Development Model? & \citep{Baldwin_and_Clark2006}\\
+\bottomrule 
+\end{tabularx}
+\end{table}
+
+
+\begin{table}[h]
+\caption{Key open-source software articles published in \textit{European Economic Review}} 
+\begin{tabularx}{\textwidth}[]{lp{5cm}l}
+\toprule
+Index & Title & Ref\\
+\midrule
+& & \citep{Lerner_and_Tirole2001}\\
+\bottomrule 
+\end{tabularx}
+\end{table}
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+\newrobustcmd{\FTArticlesOnFLOSSByAuthor}{{ \huge \bfseries FTArticlesOnFLOSSByAuthor}
+
+
+\vspace{1cm}
+
+TODO implement FTArticlesOnFLOSSByAuhor 
+
+Example: Key articles published by Sonali Shah. 
+
+
+\clearpage
+
+
+% 
+\begin{table}[h]
+\caption{Key open-source software articles published by Joel West} 
+\begin{tabularx}{\textwidth}[]{llll}
+\toprule
+Index & Journal & Title & Ref\\
+\midrule
+West\_and\_Kuk2016 & & & \citep{West_and_Kuk2016}\\
+\bottomrule 
+\end{tabularx}
+\end{table}
+
+
+
+\begin{table}[h]
+\caption{Key open-source software articles published by Sandeep Krishnamurthy} 
+\begin{tabularx}{\textwidth}[]{llll}
+\toprule
+Index & Journal & Title & Ref\\
+\midrule
+\bottomrule 
+\end{tabularx}
+\end{table}
+
+\begin{table}[h]
+\caption{Key open-source software articles published by Sonali Shah} 
+\begin{tabularx}{\textwidth}[]{llll}
+\toprule
+Index & Journal & Title & Ref\\
+\midrule
+\bottomrule 
+\end{tabularx}
+\end{table}
+
+
+
+
+
+\vspace{1cm}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

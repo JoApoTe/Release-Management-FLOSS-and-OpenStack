@@ -1,0 +1,24 @@
+% Funding tips should support the writing of grant proposals 
+% Funding tips should capture best practices for writing winning granting applications 
+
+% For use, it requires submissionAndRevisionTools.sty to be imported before
+% It depends on submissionAndRevisionTools.sty \newtcolorbox
+
+
+\RequirePackage{tcolorbox}
+
+
+
+
+
+% Add a boxed note to  highlight that the text was submitted somewhere.
+% Argument Journal and/or Date submitted 
+\newcommand\FundingTip[1]{
+    
+    \begin{tcolorbox}
+    \footnotesize \centering {\color{blue}TIP:} #1 
+    \end{tcolorbox}
+    }%
+  
+  
+

@@ -1,0 +1,133 @@
+% Paper tips should support the writing of academic mapers 
+% Paper tips should capture best practices for writing  papers that get published at top venues 
+
+% Paper tips support many tipes of papers: 
+%% Qual papers 
+%% Quant papers 
+%% SNA paper 
+%% MIX methods papers 
+%% Critial realism papers 
+%% Network science papers 
+%% Either empirical and conceptual 
+%% Either testing theory or building theory 
+%% Positivist case study 
+%% Interpretivist case study 
+%% Critical realist case study 
+%% Systematic literature review 
+%% Critical review 
+
+% For use, it requires submissionAndRevisionTools.sty to be imported before
+% It depends on submissionAndRevisionTools.sty \newtcolorbox
+
+
+\RequirePackage{etoolbox}
+
+\RequirePackage{tcolorbox}
+
+
+
+% Add a boxed note to  highlight a tip
+% Argument is the tip itself 
+\newrobustcmd{\PaperTip[1]}{
+    
+    \begin{tcolorbox}
+    \footnotesize \centering {\color{blue}TIP:} #1 
+    \end{tcolorbox}
+}%
+
+
+\newrobustcmd{\IntroductionCriticalReviewTips}{
+
+
+\begin{tcolorbox}
+\DLquote{''The  purpose of
+ this  paper is to stimulate  reflection on the implications of
+ the research approaches we as researchers employ when  \textbf{we investigate  information
+systems phenomena}``} \citep{Orlikowski_and_Baroudi1991}. --- Nice way to introduce a critical review paper.
+\end{tcolorbox}
+
+
+
+\DLquote{''The  paper  is structured  as  follows.  In  the first  section  we detail  the  results  of  a
+survey which provides evidence for a collective research tradition within the informa-
+tion systems
+ field,
+ and discuss why
+ we
+ believe such a single philosophy toward study-
+ing information  systems phenomena can be limiting. In the following two sections
+ we
+describe and illustrate two other philosophical research traditions which we consider
+to be  valuable  approaches to  studying  information  systems and  their  development
+and  use in organizations. We conclude with some general recommendations  for the
+information  systems community.``} \citep{Orlikowski_and_Baroudi1991}. --- Nice last paragraph for the introduction of a critical review paper.
+
+}% 
+
+
+  
+\newrobustcmd{\ResultsTips}{
+\begin{tcolorbox}
+Jose Teixeira tips for a winning results section:
+
+\textbullet 
+The results section should not engage with the literature at all -- that should be relegated to the discussion section. However, when presenting results, take in mind who are the potential reviewers, and add some hooks (i.e. briefly mention literature). It up to you to add small/micro discussions with literature potentially published by potential reviewers. Limit such micro discussion to papers from the target journal, the editors that are the most probable reviewers. 
+
+The use of footnotes or endnotes, and the use of the cf. abbreviation in citations can be useful to introduce such micro discussions. 
+
+Do not forget to mention such scholars in the cover letter. Also do not forget to discuss such hooked micro-discussions in the discussion section. 
+\end{tcolorbox}
+}% 
+  
+  
+\newrobustcmd{\DiscussionTipsEmpiricalPaper}{
+
+\begin{tcolorbox}
+\textbf{Jose Teixeira tips for a winning discussion section:
+}
+
+
+\textbullet  Consider the following \textbf{subsections} for the discussion of a empirical paper: 
+
+\begin{itemize}
+ \item What we did, what we learned, and what is the value added of this research (perhaps before opening the subsections)
+ \item  \textbf{Key results/findings} and integration with prior literature
+ \subitem Integration with prior literature starts with what was confirmed 
+  \subitem Integration with prior literature continue with what we extend 
+   \subitem Integration with prior literature starts with what we see or propose as new 
+\textbf{ \item Theoretical contributions
+ \item Methodological contributions 
+ \item Practical contributions 
+ \item Limitations 
+ \item Future research }
+
+ 
+ 
+\end{itemize}
+
+\textbullet Leave societal impact issues to the conclusion 
+
+
+\textbullet  If you have some hooked micro-discussions in the results section.  Do not forget to expand them in the discussion section. If they are relevant to non-experts on the area, mention them in the conclusion as well. 
+
+\textbullet Always look back to the literature that was reviewed, after-all you should be standing on that is already in the literature. 
+
+\textbullet You can use color schemes to better link the associated parts across the Literature, Results and Discussion sections.  
+\end{tcolorbox}
+}% 
+  
+  
+\newrobustcmd{\ConclusionTips}{
+\textbullet 
+\begin{tcolorbox}
+
+Jose Teixeira tips for a winning conclusion section:
+
+\end{tcolorbox}
+
+}% 
+
+  
+
+  
+

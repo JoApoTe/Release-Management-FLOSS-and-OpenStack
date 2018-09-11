@@ -1,0 +1,83 @@
+\documentclass[a4paper,10pt,notitlepage]{scrartcl}
+
+% For testing the tips for writing FLOSS academic papers provided by  FLOSSpaperTips.sty  
+
+
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[american]{babel}
+\usepackage{csquotes}
+
+
+\usepackage{graphicx}
+\usepackage{url}
+
+
+\input{bibliographies.config.tex}
+
+
+\iftoggle{bibtex_natbib}{
+  \usepackage{natbib}
+  \bibliographystyle{abbrvnat}
+  \setcitestyle{authoryear,open={(},close={)}}
+}{}
+
+
+
+
+\iftoggle{biber_biblatex}{
+  % In compatibility with natbib with biber as backend 
+  %\usepackage[style=numeric,backend=biber,natbib=true]{biblatex} 
+  \usepackage[style=alphabetic,citestyle=authoryear,backend=biber,natbib=true,bibencoding=utf8]{biblatex}
+  \addbibresource{./bibliographicreferencesforwritingacademicpapers/floss.bib}
+  }{}
+
+
+\input{./FLOSSpaperTips.sty}
+
+
+\usepackage{hyperref} 
+% Make sure it comes last of your loaded package
+
+
+\author{Jose Teixeira}
+\date{01/15/18}
+
+\begin{document}
+ 
+
+\FTspecialIssuesOnFLOSS 
+
+\FTreviewArticlesOnFLOSS
+
+\FTTInfluentialTheoryArticlesOnFLOSS
+
+\FTArticlesApplyingNetworkScienceOnFLOSS
+
+\FTTenArticlesForTJJOneDoctoralCourse
+
+
+
+\clearpage
+
+\FTArticlesOnFLOSSByJournal
+
+\clearpage
+
+\FTArticlesOnFLOSSByAuthor
+
+\clearpage
+
+\FTCitationConventions
+
+\iftoggle{bibtex_natbib}{
+  \bibliography{./bibliographicreferencesforwritingacademicpapers/floss}
+}{}
+
+\iftoggle{biber_biblatex}{
+  \printbibliography
+}{}
+ 
+\end{document}
+

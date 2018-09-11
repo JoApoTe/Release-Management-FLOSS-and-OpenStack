@@ -1,0 +1,219 @@
+
+
+
+\newPara{
+% Grammarly checked  18 june 2018
+Given that release management at OpenStack evolves dynamically as a 'moving target', we organized our narrative across three phases of OpenStack. First, we briefly describe its early days as an internal project of NASA. Then, we look at its bootstrap as an open source software project largely steered by Rackspace (at that time supplying NASA with cloud computing services). After that, we concentrate our attention on describing release management at OpenStack at a more recent and mature phase (i.e., release management of OpenStack as by the end of the year 2017).  We provide a narrative on the evolution of release management at OpenStack while purposively focusing on its more recent and mature phases from which more lessons can be learned. 
+}
+
+\subsection{Early days at NASA}
+The OpenStack project was officially announced on July 21, 2010 at OSCON (a business and technical oriented convention organized by O'Reilly Media that annually gathers many open source contributors across different cities of USA)\footref{noteHistory}. However, the technology behind OpenStack started much earlier at NASA  (a well-known space and aeronautics research agency) and Rackspace (a popular provider of hosting services).
+
+At that time,  Anso Labs had published the beta code for \textit{Nova}, a cloud computing fabric controller implemented in the C, C++ and Python programming languages.  Anso Labs was later acquired by Rackspace on February 9, 2011 and since then \textit{Nova} remains a core component of OpenStack. Meanwhile, Rackspace also wanted to rewrite the infrastructure code running its offering for cloud servers, and open sourced the existing cloud files. This open sourcing of code, previously held in-house,  led to the creation of \textit{Swift} that is OpenStack's scalable redundant object storage system. As an open source project, \textit{Swift} was able to address the exceptionally demanding storage needs of NASA. The first release of OpenStack had then two main components: \textit{Nova} and \textit{Swift}. This is how OpenStack started (see 
+\cite{teixeira_and_Hyrynsalmi2017icsob} for a more detailed narrative on how OpenStack started at the hands of  NASA, Anso Labs, Rackspace, and others).
+
+These initial software components were not developed in the open source arena but in-house. The software was released once new features were ready. This is in a big contrast with OpenStack today, in terms of release strategy and the overall development transparency.  Nowadays, OpenStack releases trail a six-month release schedule and tarballs\footnote{A compressed archiving format that is very popular within the open source community} are available for every single code commit. In the particular case of \textit{Nova} at NASA, its release management was influenced by procedural requirements at NASA: all software developed in and for NASA should follow comprehensively documented procedures such as  Release Management (SWE-085), SW Development-Management Plan (SWE-102),  and Release of NASA Software (NPR 2210) among many others\footnote{See \url{https://nodis3.gsfc.nasa.gov/} for the NASA Online Directives Information Systems (Agency Level Directives) and \url{https://swehb.nasa.gov/} from the Software Working Group for accessing relevant versions of this kind of procedural documentation.}.
+
+\newPara{
+Nowadays, NASA has its own documented procedures on how to release open source software. So far, NASA has released more than 60 software projects under the NASA Open Source Agreement (NOSA), a non-permissive license created and approved by the Open Source Initiative (OSI) in 2013.  Note, however, that in the early days of OpenStack at NASA, the release of software to the open source community was uncommon \footnote{See \url{https://open.nasa.gov/blog/open source-development-at-nasa/} for more information on how NASA has improved its engagement with the open source community.}
+}
+
+\subsection{Bootstrap as an open source project}
+
+% Scribendi lite checked  19 Jun 
+The mission of OpenStack, in the announcement in July 2010, was to "to produce the ubiquitous Open Source Cloud Computing platform that will meet the needs of public and private clouds regardless of size, by being simple to implement and massively scalable.`` The first OpenStack design summit was held in Austin, Texas, USA during July 2010\footref{noteHistory}. The announcement highlighted prior work made in NASA. Citrix, a long standing partner of Rackspace on virtualization technologies,  joined the project.  The project kept growing with more and more partners (e.g., Intel, Cisco, Nebula, CloudScale, HP, Mirantis, Canonical, VMware, RedHat, and IBM among others) and the OpenStack foundation was founded as a non-profit corporate entity, established in September 2012, to manage and promote OpenStack and its community. 
+(see \cite{teixeira2015lessons,teixeira_and_Hyrynsalmi2017icsob} for more details on how OpenStack open source project grew over time). For protecting the brand, OpenStack holds the trademark and hires staff that deal directly with release management from the development side (engineering, design, infrastructure, ecosystem management, etc.) as well as the marketing side (events, communications, launching, promoting, etc.). 
+
+% Scribendi lite checked  19 June 
+As OpenStack was growing in terms of community, code, and complexity.  Thierry Carrez, an engineer with much experience in  Linux distributions (Ubuntu and Gentoo) was hired by Rackspace to do release management at OpenStack. As noted in the following quotation, and in congruence with prior research on why open source software projects should adopt time-based releases \cite{michlmayr2015and}, a time-based release strategy sets a cadence, a rhythm, a pulse of contributions across the project. Moreover, the setting of release dates allows developers to shift their focus from feature development to bugfixing -- all towards a better quality of the software being released. 
+
+
+\begin{quotation}
+\footnotesize
+'The most obvious value of release cycles is to help producing a release. It allows us to shift focus from feature development to release-critical bugfixing, which results in better quality in the end release. But to me, the most important value of release cycles is that they create a common rhythm of contribution, a common pulse, which is essential for our virtual and global community to feel part of the same project' --- Thierry Carrez , 1 July 2013\footnote{See \url{https://www.mirantis.com/blog/openstack-project-technical-lead-interview-series-4-thierry-carrez-chair-of-the-openstack-technical-committee-release-manager/}}. 
+\end{quotation}
+
+
+% Scribendi lite checked  19 June 
+
+The project started with a 3-month release cycle, but at the third OpenStack Design Summit in Santa Clara, April 26-29, 2011, they decided to switch from a 3-month cycle to a 6-month coordinated release cycle, with more frequent milestone deliveries in the middle\footnote{See \url{ https://ttx.re/the-diablo-1-milestone.html} for more information on the switch from a 3-month cycle to a 6-month coordinated release cycle.}. Given the resources of the community at that time, developers had difficulties to land new features in such a short time window. As evidenced by the following quotation, the long time stabilizing and maintaining what was developed so far drove the community towards the longer 6-month release cycle. In this sense, the release management cycle length started by resembling Linux (2-3 months) but evolved to what we can see at other reference open source projects such as Ubuntu, GCC, X.org and GNOME (6 months) \cite{michlmayr2015and}.
+
+ 
+\begin{quotation}
+\footnotesize 
+'You may remember that we used to have 3-month cycles at the beginning of OpenStack. Currently, it takes us about 4 weeks after we stop adding features to come up with a valid release candidate. In a 6-month release cycle, it’s acceptable to be feature-frozen for one month. In a 3-month release cycle, less so. Releasing every 3 months also means maintaining twice as many stable branches. So if more people addressed critical bugs during the rest of the cycle (when we are not feature-frozen) and more people helped with stable branch maintenance and security updates, we could definitely consider going for 3-month cycles. I like to have a Design Summit at the beginning of each cycle (I think it helps us deliver better results), so we’d probably also have to convince the Foundation to pay for twice as many developer events' --- Thierry Carrez , 1 July 2013\footnote{See \url{https://www.mirantis.com/blog/openstack-project-technical-lead-interview-series-4-thierry-carrez-chair-of-the-openstack-technical-committee-release-manager/}}. 
+\end{quotation}
+
+
+
+\subsection{Reaching maturity as complex open source project}
+
+The first release, code-named 'Austin', appeared four months after the OpenStack announcement at OSCON, with plans to release regular updates of the software every few months. 'Austin' was already a sizable release as it inherited the code base from NASA's Nebula platform as well as the code base from Rackspace's Cloud Files platform.  Firms such as Canonical, SUSE, Debian and  Red Hat, all with a recognized role in the open software world, were among the first organizations engaging with OpenStack. Citrix, HP, and IBM were among the first high-tech giants that contributed to development of the project. 
+
+% Scribendi lite checked  
+As OpenStack increased both  in size and  complexity, the forthcoming releases code-named 'Bexar', 'Cactus', and 'Diablo' came at irregular intervals that ranged from three to five months\footnote{See historical information on the exact release dates at \url{https://releases.openstack.org/}.}. As captured by the following quote, the  'Diablo' was the first of many forthcoming releases launched within a six months release cycle. 
+
+\begin{quotation}
+\footnotesize
+``This release marks the first six month release cycle of OpenStack.  The next release, Essex, will also be a six month release cycle and development is now officially underway. While Diablo includes over 70 new features, the theme is scalability, availability, and stability.''  --- Devin Carlen, 29 September 2011\footnote{See \url{https://www.openstack.org/blog/2011/09/openstack-announces-diablo-release/}.}.
+\end{quotation}
+
+
+% Scribendi lite checked
+%By adopting Git as i distributed version control systems like Git encorage developers have more and smaller repositories
+%While open source software projects are traditionally hosted within a single repository
+%(see \cite{Potvin_and_Levenberg2016}),
+
+OpenStack is so far orchestrated by the Git distributed version control system (aka repository) and the Gerrit revision control system (aka code review tool). 
+The source code of OpenStack is hosted across dozens of repositories\footnote{For an exhaustive list of OpenStack repositories see \url{http://git.openstack.org/cgit}.}. Due to the inherent complexity of a large-scale project developed by dozens of firms and hundred of developers,  keeping everything within a single repository would raise issues about when and where bugs are introduced  or how to trace longitudinally the development of features. Moreover, by using a  multiple repository approach, access control can be customized to each individual repository. New developers need not spend so much time learning the structure of a large source code tree, and small changes across the multiple projects would not bother so much the other projects. Additionally,  OpenStack also attempted a modular architecture with various components, when each repository was managed by the project team responsible by each component\footnote{We acknowledge that some OpenStack components are also hosted in multiple repositories (e.g., Neutron the  “network connectivity as a service`` component). They are, however, exceptional cases.}. Some components, such as the OpenStack Compute (aka Nova and the computing fabric controller), are core components on which many other components rely. To be able to integrate with these components, modular designs and much cross-project coordination is required.
+
+
+% Scribendi lite checked  
+\begin{quotation}
+\footnotesize
+''We started this five-year mission with two projects: Nova (Compute) and Shift (Object Store) and over time, the number of projects in OpenStack grew. Some of this where parts of the existing projects that split out to have their own separate teams and become little more modular. Other things were good new ideas that people had that fit within the realm of OpenStack. Like interesting things that you would want to do in or with a cloud. Over time, we built a process around that to deal with the fact that there were so many of these projects coming in.'' --- Sean Dague , 15 May 2015\footnote{Transcribed from video, see [1:26--2:06] \url{https://www.openstack.org/summit/vancouver-2015/summit-videos/presentation/the-big-tent-a-look-at-the-new-openstack-projects-governance}.}
+\end{quotation}
+
+% Scribendi lite checked  
+OpenStack keeps refining its release management process but it is adhering to a six-month release cycle. Each release cycle encompasses planning (1 month), implementation (3 months), and integration (2 months) where most pre-release critical bugs should be fixed. During the earlier release phase, the coding efforts are much driven by discussion and specifications, while in a later release phase (i.e., stabilization of release candidates) the development turns into the bugfixing mode (as reported in other open source projects~\cite{martinez2008using,rossi2009analysis,michlmayr2015and}). At each release, developers start by implementing the discussed and/or specified key features while, by the end of the release, there is a peak of bugfixing activities. To sum up, each release cycle starts in a specification and discussion driven way and ends in a bug tracker oriented way.    
+
+
+% Scribendi lite checked  
+The planning stage is at the start of a cycle, just after the previous release. After a period of much stress to make the quality of the previous release acceptable, the community steps back and focuses on what should be done for the next release. This phase usually lasts four weeks and runs in parallel with the OpenStack Design Summit on the third week (in a mixture of virtual and face-to-face collaboration). The community discusses among peers while gathering feedback and comments. In most cases, specification documents are proposed via an infrastructure system\footnote{See \url{http://specs.openstack.org/} for intra-project and cross-project specifications.}  that should describe precisely what should be done. Contributors may propose new specs at any moment in the cycle, not just during the planning stage. However, doing so during the planning stage is preferred, so that contributors can benefit from the Design Summit discussion and the elected Project Team Leads (PTLs) can include those features into their cycle roadmap. Once a specification is  approved by the corresponding project leadership, implementation is tracked in a feature blueprint\footnote{See \url{https://wiki.openstack.org/wiki/Blueprints} for more information on how OpenStack handles its blueprints (aka design plans) that track each feature implementation.}, where a priority is set and a target milestone is defined, communicating when in the cycle the feature is likely to go live. At this stage, the process reflects the principles of agile methods. 
+
+% Scribendi lite checked  
+The implementation stage is when contributors actually write the code (or produce documentation and test cases, among other 
+software-related artifacts) mapping the defined blueprints. This phase is characterized by milestone iterations (once again a 
+characteristic of agile software development methods). Once developers perceive their work as ready to be proposed for merging into 
+the master branch, it is pushed to OpenStack's Gerrit review system for public review\footnote{For more information on the OpenStack 
+code-review activities, see \url{https://docs.openstack.org/infra/manual/developers.html}.}. It is important to remark that in order to be reviewed in time for a milestone, the change should be proposed a few weeks before the targeted milestone publication date. An open source software collaboration platform\footnote{See \url{https://launchpad.net/} for more information on the adopted software collaboration platform as well as \url{https://launchpad.net/openstack} for more information on how OpenStack uses it.}  is used to track blueprints in the implementation stage. In a more open source way and not to discourage contributors, it is worth remarking that not all features have to go through the blueprints tracking: contributors are free to submit any \emph{ad hoc} patch. Both specifications and blueprints are tools supporting the discussion, design, and progress tracking of the major features in a release. Although the big corporate contributors are naturally more influential in the election of Project Team Leads (PTLs) steering the tracking process, this should not prevent other contributors from pushing code and fixes into OpenStack. Development milestones are tagged directly on the master branch during a two-day window (typically between the Tuesday and the Thursday of a milestone week). At this stage, heavy infrastructure tools that continuously integrate and test the new code play a very important role\footnote{See \url{http://docs.openstack.org/infra/jenkins-job-builder/} for more information on continuous upstream unit testing as well as  \url{http://docs.openstack.org/infra/zuul/} and \url{http://docs.openstack.org/developer/tempest/} for more information on continuous upstream integration testing across interrelated projects and repositories.}.
+
+
+
+% Scribendi lite checked  
+At the last development milestone, the OpenStack release management team applies three feature freezes:  \emph{FeatureFreeze}, \emph{SoftStringFreeze} and \emph{HardStringFreeze} that gradually constrain the evolution of the code base as described in \Cref{t:3freezes}. At this point, the project stops accepting new features or other disruptive changes. It concentrates on stabilization, packaging, and translation. The project turns then into a pre-release stage, termed as `release candidates dance'\footnote{See \url{http://docs.openstack.org/project-team-guide/release-management.html} for more information on the release cycles.}. Contributors are encouraged to turn most of their attention to testing the result of the development efforts and to fix release-critical bugs. Critical missing features, dubious features, and bugs are documented, filed and prioritized. Contributors are advised to turn their attention to the quality of the software and its documentation. The development becomes mainly bugfixing oriented and a set of norms and tools guide this last product stabilization phase\footnote{See \url{https://wiki.openstack.org/wiki/BugTriage} and \url{https://wiki.openstack.org/wiki/Bugs} for more information on bugfixing activities.}. 
+% ~\cite{openstack_triage_2015,openstack_bugs_2015}. 
+Between the last milestone and the publication of the first release candidate, contributors are urged to stop adding features and concentrate on bug fixes. Only changes that fix bugs and do not introduce new features should be allowed to enter the master branch during this period.
+Any change proposed for the master branch should at least reference one bug on the bug tracking system. Once all the critical bugs for the release are fixed, OpenStack produces the first release candidate for that project (named RC1). Across this last stage, the repository version control system (i.e., Git) plays an important role in alleviating the interruption caused by the freezes. A freeze applies only to the stable branch so that developers can continue their work on other the development branches (i.e., the trunk). New features should be committed to other branches, discussed at the  planning stage, and merged into the stable branch at the next implementation stage.
+
+
+\begin{table}
+\centering
+\renewcommand{\arraystretch}{1.3}
+\caption{The three feature freezes of OpenStack.\label{t:3freezes}}
+\begin{tabularx}{\textwidth}[]{
+m{\dimexpr.200\linewidth-2\tabcolsep-1.3333\arrayrulewidth}
+m{\dimexpr.800\linewidth-2\tabcolsep-1.3333\arrayrulewidth}
+}
+\toprule
+Freeze & Description \\
+\midrule 
+\emph{FeatureFreeze} & Project teams are requested to stop merging code adding new features, new dependencies, new configuration options, database schema changes, changes in strings ... all things that make the work of packagers, documenters or testers more difficult. \\
+\emph{SoftStringFreeze} &  After the FeatureFreeze, translators start to translate the strings. To aid their work, any changes to existing strings is avoided, as this will invalidate some of their translation work. New strings are allowed for things like new log messages, as in many cases leaving those strings untranslated is better than not having any message at all.\\
+\emph{HardStringFreezee} & 10 days after the SoftStringFreeze,  any string change after RC1 should be discussed with the translation team.\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+
+% Scribendi lite checked  
+The OpenStack release team is empowered during this last phase. It creates a \texttt{stable/*} branch from the current state of the \emph{master branch} and uses access control list (ACL) mechanisms to introduce any new release-critical fixes discovered by the release day.  In other words, further changes at this stage require permission from the release team. In the words of OpenStack, they will be treated as feature freeze exceptions (FFE). Between the RC1 and the final release, OpenStack looks for regression and integration issues. RC1 may be used \emph{as is} for the final release unless new release-critical issues are found that warrant an RC respinning. If this happens, a new milestone will be open (RC2), with bugs attached to it. Those RC bug fixes need to be merged in the \emph{master branch} before they are allowed to land in the \texttt{stable/*}  branch. Once all release-critical bugs are fixed, the new RC is published. This process is repeated as many times as necessary before the final release. As the final release date gets closer, to avoid introducing last-minute regressions, the release team limits the number of changes and their impact: only extremely critical and non-invasive bug fixes can get merged. All the other bugs are documented as known issues in the Release Notes instead. 
+
+% Scribendi lite checked 
+On the release day, the last published Release Candidate of each integrated project is collected and the result is published collectively as the OpenStack release for this cycle. OpenStack should by then be stable enough for real industrial deployments. Once the version is released, a new cycle will commence within OpenStack; the \emph{master branch} switches to the next development cycle, new features can be merged freely, and the process starts again. After the release and a period of much stress that required much coordination, most of the community shifts again to the planning stage and many will attend the Design Summit. A new branch has been opened already to accommodate new developments. Even so, the launched release needs to be maintained and further stabilized until its end of life (EOL), when it is no longer officially supported by the community. OpenStack might release bugfix updates on top of previously announced releases with fixed bugs and resolved security issues, actions that might distract developers working on newer items. 
+
+
+% The advantage of the unmanaged 
+
+% For the discussion or future research
+% \begin{quotation}
+% ``I think of the period where we lose potential features as free fall because thing can go in any direction. The release literally reverses course: instead of expanding, it is contracting. This process is very healthy for OpenStack. It favors code stability and “long” hardening times. For operators, this means that the code stops changing early enough that we have more time to test and operationalize the release.
+% 
+% The developers who invested time in the code do not simply take a 3 month sabbatical, nor do they stop their work and start testing the code that was kept. No, after the short in/out sorting pause, the free fall work continues onward with rockets blasting. The challenge is that it is now getting outside of the orbit of the release plan and beyond the radar of many people who are tracking the release.
+% 
+% The consequence of this ongoing development is that developers (and the features they are working on) show up at the summit with 3 extra months of work completed. It also means that OpenStack starts each release cycle with a bucket of operationally ready code.''  % Other continue patching 
+% \end{quotation}  \url{https://robhirschfeld.com/2012/09/28/balastic-release/}
+
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[keepaspectratio=true,width=0.9\textwidth]{./Figures/release-management/release-management-overview.pdf}
+%  % release-management-overview.pdf: 0x0 pixel, 300dpi, 0.00x0.00 cm, bb=
+  \caption{Overview of the OpenStack standard release cycle.}
+ \label{fig:3stageprocesspic}
+\end{figure}
+
+
+
+% Scribendi lite checked 
+The overall release management process, as illustrated in \Cref{fig:3stageprocesspic}, follows a plan, implement, freeze, stabilize and launch cycle between releases. Each release is then re-stabilized with \emph{a posteriori} release updates to fix bugs and security issues. Nevertheless, the process described so far is just the most recurrent pattern within OpenStack, the default \emph{modus operandi}. The described process is actually quite open and liberal. It acts as a recommendation for the different teams so that whatever is developed is then later more smoothly integrated, stabilized and released in a coordinated fashion. 
+%
+
+% Scribendi lite checked 
+Since October 2016 (affecting the 'Newton' release), OpenStack actually recommends its project teams to choose from four different release management models: \emph{Common cycle with development milestones}, \emph{Common cycle with intermediary releases}, \emph{Trailing the common cycle} and \emph{Independent release model}.  
+%described in \cref{t:4releasemodels}.
+Most of these models follow a common six-month development cycle, some give intermediary releases within the six-months cycle and others are allowed to manage their own release strategy\footnote{See \url{http://docs.openstack.org/project-team-guide/release-management.html} for the details of each release management model.}.  
+
+% Scribendi lite checked 
+\begin{description}[leftmargin=!]
+\footnotesize
+\item[Common cycle with development milestones] The official and default time-based model followed by most teams. It results in a single release at the end of the development cycle and includes three development milestones (as in \Cref{fig:3stageprocesspic}).
+
+\item[Common cycle with intermediary releases] For project teams wanting to do a formal release more often, but still want to coordinate a release at the end of the cycle from which to maintain a stable branch. Recommended for libraries, and for more stable components, which add a limited set of new features and do not plan to go through large architectural changes.
+
+\item[Trailing the common cycle]  For project teams that rely on the completeness of other components (e.g., packaging, translation, and UI testing) and may not publish their final release at the same time the other projects. For example, teams packaging and deploying OpenStack components need the final releases of many other components to be available before they can run their own final tests. Cycle-trailing project teams are given an extra two weeks after the official release date to request the publication of their own releases. They may otherwise use intermediary releases or development milestones. 
+
+\item[Independent release model]  For project teams that do not benefit from a coordinated release or from stable branches. They may opt to follow a completely independent release model. Suitable for example for the OpenStack's own infrastructural systems (e.g., the ones supporting upstream testing and integration) as well for components with little dependence on the overall Openstack core architecture. 
+\end{description}
+
+
+% 
+% % Scribendi lite checked 
+% \begin{table}
+% \centering
+% \renewcommand{\arraystretch}{1.3}
+% \caption{The four release management models of OpenStack\label{t:4releasemodels}.}
+% \begin{tabularx}{\textwidth}[]{
+% m{\dimexpr.27\linewidth-2\tabcolsep-1.3333\arrayrulewidth}
+% m{\dimexpr.73\linewidth-2\tabcolsep-1.3333\arrayrulewidth}
+% }
+% \toprule
+% Release model & Description \\
+% \midrule 
+% \emph{Common cycle with development milestones} & The official and default time-based model followed by most teams. It results in a single release at the end of the development cycle and includes three development milestones (as in \Cref{fig:3stageprocesspic}). \\
+% \emph{Common cycle with intermediary releases} & For teams which want to do a formal release more often, but still want to coordinate a release at the end of the cycle from which to maintain a stable branch. Recommended for libraries, and to more stable components which add a limited set of new features and do not plan to go through large architectural changes.\\ 
+% \emph{Trailing the common cycle} & For teams that rely on the completeness of other components (e.g., packaging, translation, and UI testing), they may not always publish their final release at the same time as those projects. For example, teams packaging and deploying OpenStack components need the final releases of those components to be available before they can run their own final tests. Cycle-trailing project teams are given an extra two weeks after the official release date to request publication of their own release. They may otherwise use intermediary releases or development milestones. \\
+% 
+% \emph{Independent release model}  & For project teams that do not benefit from a coordinated release or from stable branches and opt to follow a completely independent release model. Suitable for instance for the OpenStack own infrastructural systems (e.g., the ones supporting testing and upstream integration) as well for components with little dependence on the overall Openstack core architecture.  \\ 
+% \bottomrule
+% \end{tabularx}
+% \end{table}
+% 
+
+
+% Scribendi lite checked 
+\begin{quotation} 
+\footnotesize
+ ''We still have a coordinated release at the end of the six months for projects that are willing to adhere to those deadlines and milestones, but the main change is that we will move from managing most of them to refine processes and tools for each project to be able to produce those releases more easily. The development cycle will still be using a six months development cycle, even if some projects might do intermediary releases where it makes sense, but will still organize almost everything under a six months development cycle between design summits.`` --- Thierry Carrez , 15 May 2015\footnote{Transcribed from video, see [6:34--7:00] \url{https://www.openstack.org/summit/vancouver-2015/summit-videos/presentation/the-big-tent-a-look-at-the-new-openstack-projects-governance}.}
+\end{quotation}
+
+% Secturity.
+% Cycle-trailing projects are given an extra 2 weeks after the final release date to request publication of their release. They may otherwise use intermediary releases or development milestones.
+% WHAT IS EOL Date 
+% 
+% There a stabilize and support.
+
+
+% Grammarly checked 28 Jun 
+In an attempt to sump up and aggregate key elements of our narrative,  the timeline in \Cref{fig:process-timeline} highlights key events and turning points on the evolution of release management at OpenStack. From the first days, when the overall development was shaped by the official software development processes institutionalized  at NASA, then the spin-off as an open-source project with releases at every three months,  then the shift towards a more liberal release cycle of six months, and later,  after a period of much growth, the co-existence of multiple release models trailing a common six-month release cycle. 
+
+
+
+\begin{figure}[!ht]
+ 
+\centering
+\input{./process-timeline.tex}
+  \caption{OpenStack releases and key events shaping them.}
+ \label{fig:process-timeline}
+\end{figure}
+

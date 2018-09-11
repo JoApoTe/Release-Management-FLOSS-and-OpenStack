@@ -1,0 +1,399 @@
+Reviewer reports:
+
+As addressed in https://docs.google.com/document/d/1k71UEOvfpv6jV1WVj84Qx8fZw8pDlfa1-5fPZ6LN8r4/edit?usp=sharing
+
+All reviewers agree that the manuscript is relevant and very well
+focused. However, they claim that it has not yet achieved the state  where
+it could be published. From their comments, I invite the  author to submit
+a major revision of his work. I am looking forward  to it.
+
+Reviewer #1: The paper describes the release management process used  in
+the the OpenStack project since it adopted a time-based release  strategy.
+Overall the paper is well written and gives a good  overview of the process
+used by the OpenStack project.
+
+However the author promises to "discuss how the release management
+practices of
+OpenStack evolved from the early feature-based to the current  liberal
+time-based
+release management strategy" but it is unclear to me how OpenStack's
+release process looked like before the adoption of the time-based
+strategy. Overall, I find that the paper could have benefitted from  a
+discussion comparing the differences in terms of process and tools  used in
+OpenStack during the feature-based era and the time-based era.
+
+Although I understand this might be part of the future work, my  other
+concern/disappointement while reading the paper was the lack  of
+quantitative results. I was hoping to gain some insights about  the type of
+projects making use of the different release strategy  identified. For
+example how many of the OpenStacks teams and/or  projects use each of the 4
+different release strategy presented at  the end of section 5.1 (page 10).
+Are there certain characteristics  (e.g. size, age, etc) of projects/teams
+that make them more likely  to use a specific release strategy?
+
+Minor remarks:
+* In the related work, the author mention problems commonly  associated
+with feature-based strategies but never explain them.
+* Table 1 is not referenced, and soft and hard string freezes are  not
+discussed in the text. Similarly, translation in OpenStack is  never really
+discussed throughout the paper.
+* Section 5.2 is long and would benefit to be organized into
+subsubsections.
+* The contributions of the papers are only stated at the end (page  21).
+They should appear much earlier (e.g. in the introduction).
+
+Typos:
+* Page 2, sentence starting line 27 lacks a subject (pronoun "it"?)
+* Page 2, line 47: "when a open source software project" -> when aN  open
+source project
+* Page 3, line 19: "the focus should is on removing defects" -> should be
+* Page 3, line 27: "if there would be no alternatives" -> if there was
+* Page 4, line 25: "the project it adopted a liberal six-month" ->  the
+project adopted
+* Page 10, line 46: "the different project teams are free to use its  own
+tools" -> their own tools
+* Page 11, line 25: "Therefore, its a common" -> it's
+* Page 13, line 57: "something wrong with the sentence"
+* Page 14, line 40: "It one direction" -> In one direction
+* Page 17, line 9: "work is remains manual" -> work remains manual
+
+
+Reviewer #2: I am Germán Poo-Caamaño with a background in release
+management, software ecosystems, and Free/Open Source Software
+development. I have also studied release management in OpenStack. I  will
+be offering my comments from that perspective.
+
+Title
+-----
+
+Release early, release often and release on time. A longitudinal  case
+study of release
+management in the OpenStack software ecosystem
+
+
+Summary of the paper
+--------------------
+
+This paper presents a case study of OpenStack, which results in an
+overview of the release management in OpenStack from two angles: the
+process, and the tools that support the process.
+The emphasis of this paper is the evolution from a time-based  release
+model towards a mixed release model that combines a flexible  time-based
+with feature-based release model.
+
+The current manuscript is promising, but it needs work.
+
+Major concerns
+--------------
+
+1. Threat to validity
+Threats to validity should be expanded, and clarify how each threat  is
+addressed.
+I forsee a threat in research reliability, that is, the consistency  in
+which the research results can be replicated.
+As far as I am concerned, the documentation of the OpenStack  processes
+have had major changes over time, sometimes making very  hard to find
+historical information, especially after their last  major change in the
+release model (when OpenStack moved from 6-month  release schedule to a
+mixed one).
+Because of these major changes, it seems relevant to know for how  long
+the contributors who reviewed the results have been involved in  OpenStack,
+especially in release management tasks.
+In addition, to enable the replication of the study is important to
+state the date in which each electronic resource was visited (these  are
+mainly referenced in the footnotes).
+If the content of the resources changes, researchers could look for  a
+specific timeframe in the Internet archive.
+
+2. Feature-based vesus time-bases release strategy
+
+In page 19, lines 14-20:
+
+     "However, and to the best of our knowledge, this is the first paper
+      that is explicitly aimed at describing how a large and complex open
+      source software ecosystem managed its release management processes
+      over time (from a feature-based release strategy to a liberal
+      time-based release strategy where multiple cycles co-exist)."
+
+This paragraph may be misleading.
+First, a feature-based model basically consists in to release a  product
+when it is ready, in a time-based release model, if a  feature is not ready
+then it is moved to the next cycle, and so on.
+Second, OpenStack started with a 3-month release cycle (3 first
+releases), then it switched to a 6-month release cycle for the  official
+modules, and then to a multiple release cycle
+(all within a 6-month timeframe).
+OpenStack did not migrate from featured-based to a time-based  release
+strategy.
+I think it would be more appropriate to say that OpenStack has  refined
+its time-based release model over time.
+Compare the release date of each OpenStack release  (
+https://releases.openstack.org), and/or read the interview to the
+Release Manager (Thierry Carrez):
+https://www.mirantis.com/blog/openstack-project-technical-le
+ad-interview-series-4-thierry-carrez-chair-of-the-openstack-
+technical-committee-release-manager/
+There is a question about the 3-month cycle.
+
+This concern does not invalidate the research question, but it  requires
+the paper be re-framed to
+avoid confusion.
+
+In addition, the release management process has been studied over time.
+For example, the lesson learned "The Release Team must be willing to
+redefine the official release." can only exists when the release  process
+has been studied over time.
+But it also explains why OpenStack moved from a fixed cycle with an
+"official" release, to a multiple cycle removing the concept  "official".
+See page 111 of my dissertation, reference [25] in the paper.
+(I apologize for the self-reference here).
+
+Similarly to the previous paragraph, implicitly the work of  Michlmayr
+and Fitzgerald has to be done considering the time,  projects that moved
+from featured-based release strategy to a  time-based one.
+     M. Michlmayr and B. Fitzgerald.
+     "Time-Based Release Management in Free and Open Source (FOSS)
+Projects."
+     International Journal of Open Source Software and Processes,
+4(1):1-19, 2012.
+
+
+3. Overall, the idea is good: study how the release management  process
+evolves over time.
+I think it could be better articulated.
+For example, to analyze the process against Conway's law. It seems  to
+fit, and eventually brings new challenges as the ecosystem grows.
+For example, the definition of an 'official' release (before October
+2016) which comprises a set of modules (projects) within OpenStack,  that
+seemed to reflect the software system with the organizational  structure of
+the team developing the software.
+As I said, that model serves its purpose until the ecosystem grows,  and
+start to appear similar modules, and the definition of a final  product
+becomes blurry.
+Besides the pressure for projects to become 'official' because only
+those projects were able to use the 'OpenStack' brand.
+My point is that there is more information to bring meaning to the
+changes in the release management process.
+From what I read, the papers presents a description of the process  and
+the tools, but is not clear why, or how OpenStack evolved to  that point.
+
+4. Conclusions
+
+The paper is an extended version of "Release early, release often  and
+release on time. An empirical case study of Release Management"  presented
+at OSS' 2017.
+In particular, this version extends the Results and Discussion  sections,
+and adds more references.
+The Results section contains a new subsection based on the tools  that
+support the release management tasks in OpenStack.
+
+In spite of providing new results, and an extended discussion, the
+conclusions are the same than the previous version of the paper.
+
+5. Overall the paper is easy to follow.
+However, the document needs proofreading. Some sentences are  extremely
+long, and hard to follow.
+
+I wish the author the best in moving the manuscript forward.
+
+Minor concerns
+--------------
+
+The citation format is inconsistent across the paper, which may  distract
+the reader.
+As an example (and taking the first format as the intented one):
+Page 1, line 59: '... software [5, 10]' -> Ok
+Page 2, line 6: '(e.g., [14-18])'  -> [14-18]
+Page 2, line 20: '[see 21]' -> [21]
+Page 2, line 28: '(see [6, 23])' -> [6, 23]
+Page 4, line 12: '(see [16, 30] for related research...)' -> [16, 30]
+Page 15, line 13: 'by Poo-Caamaño et al. (2017) (see [10])' -> '...  et
+al. [10]'
+
+
+Typos and grammar
+-----------------
+
++ Page 3:
+
+There is no space between lines 18 and 19.
+
++ Page 4:
+
+Line 23: '( e.g.' -> '(e.g.'
+Line 25: remove 'it'.
+Line 23-28: Rephrase. It is too long, and hard to parse.
+
++ Page 8:
+
+Table 1:
+- 'changes in string' -> 'string changes' (keep the enumeration style)
+- Extra space before '...'.
+- 'any changed' -> 'any change'
+- 'any string changes' -> 'any string change'
+- Increase the space between columns. There is no space after
+'HardStringFreeze' in the third row.
+
++ Page 9:
+
+Figure 1:
+- (caption) cycles -> cycle
+- Use 'weeks' instead of 'wks'. It seems to be enough room to use  the
+whole word.
+- Expand 'EOL' to 'End of life' (there is space, and it would be clearer).
+- The font size for milestones (vertical text) is too small, and
+therefore, difficult
+   to read. Consider a bigger font size.
+
++ Page 10:
+
+There is no space between lines 8 and 9.
+
+Line 53: 'research' -> 'research,'
+Line 54-55: Rephrase. Hard to read '... in large open-source  software
+ecosystems coordination across multiple projects team ...'
+
++ Page 20:
+
+Line 6: 'c.f ' -> 'cf. '
+
++ Page 24:
+
+Line 52: Fix '???' in reference.
+
++ Page 22:
+
+Line 56: If 'liberal' needs an immediate clarification as 'flexible  to
+adaption', it seems reasonable to use 'flexible' instead.
+Furthermore, the term liberal has been used extensively through the
+text, it seems late to clarify it.
+
+
+Reviewer #3:
+
+Overall the paper reads well, though there are a large number of
+punctuation, spelling, and grammar issues that could be improved.  This
+slows down the reading a lot. I strongly suggest to ask a  native English
+colleague or a professional service for proof-reading.
+
+The author conducted an archival case study, drawing quotes and  other
+information from archives such as blogs. I don't have a  problem with this
+approach, but it is important to ensure that, as  an author, you don't
+inappropriately infer things that you believe  are true, but might not be;
+it's not a novel.
+
+The main question should be a bit more detailed, or decomposed into
+either a set of subquestions or there should be a set of themes that  are
+addressed. The current description is very very long at points  (page after
+page of full text without break), and it's easy to lose  focus. What would
+be the main pain points for open-stack to adopt a  timebases release
+schema? You state that particular attention was  given to processes and
+infrastructure, but perhaps that is a little  bit too high level. Or,
+discuss what are the main problems in those  areas. Or if not problems,
+what is most remarkable.
+
+
+
+
+Typos etc.:
+For example, remove the period in the Eric Raymond quote;
+"in one side" -> "on one side".
+Don't use full names e.g. Martin Michlmayr; just use last names,  which
+is the standard.
+"Is therefore not surprising" => "It is therefore ?"
+As many of this projects -> these
+Grown -> grow
+Time-based released -> release
+
+The author points out that not much work has been done on release
+management in open source, which is true I believe, but there is a  whole
+lot done in proprietary software, see e.g. Guenther Ruhe and  many of his
+colleagues. I'm not suggesting to discuss this at  length, but it should be
+acknowledged; also how is release  management different in open source ;
+can we not learn anything from  the literature on release management in
+prop software?
+
+
+
+If you state it is getting generally accepted that as open source
+projects grow, they should adopt a time-based release strategy, what
+evidence is there for that statement? Is this your observation, or  is this
+a trend?
+
+The type-setting of the types of freezes at the end of section 2 is
+curious. Instead of quotes, just rephrase yourself and make use of  proper
+bullet points.
+
+Section 2 'walks off a cliff' there is no summary or 'gap spotting'  at
+this point. What is the research goal or question that you  discovered?
+
+What does 'empirical background' mean? Is this the study that you  are
+presenting?
+It becomes clear later on that this presents what it means; I would
+suggest to rename this "Background to the Case Study" or something.
+
+It is not clear what you mean by 'our empirical unit of analysis'  are
+you saying that openstack as a whole is your unit of analysis?
+
+Counted with more than ?> counted more than
+(At this point I will stop listing typos/grammar; just get them fixed).
+Also, minimise the use of the phrase "After all"
+
+Don't use language such as "we landed in blogs".
+
+There is repetition in section 4 regarding the scarcity of research  on
+time-based releases in open source.  Sec 4 could do with more  details on
+the methodology.
+
+If your research is still at an early stage, why report in a journal?
+I suggest to remove this and reconsider and reflect on your study in
+more depth.
+
+Repetition again in section 5.
+
+Remove the "aka" in sec 5.1
+
+You infer from whatever sources you used (which is not sufficiently
+clear in my view) that "there is a period of much stress" - but how  do you
+know? It doesn't seem there were any interviews in this  study? It seems to
+me this study fully relies on archival data, so  you shouldn't write a
+novel-style description that infers all sorts  of ideas.
+
+While reading Sec 5 I find the description a bit long and a bit hard  to
+follow. It would be good to introduce more structure; are there a  number
+of themes, for example, by which you could organise the  findings, in
+subsections. (There are a few, but there's pages of  text without break).
+
+It might be worth considering to ask yourself: what themes am I
+discussing and what answers do they provide to which questions?  Also,
+which questions would be important to ask given the main  question, namely
+how did OpenStack adopt a time-based release  schedule? How can this be
+further decomposed, or what are the  potential difficulties when doing so.
+Those are the things worth  investigating, which you might already have
+done, but it is hard to  find and to follow. There is a bit lack of of
+focus in my view.
+
+Whats' on the Y axis in Fig 1
+
+I don't think there is much use in proposing 1 theoretical  proposition;
+either do a full theory-development study, or simply  stick with a
+descriptive study altogether.
+
+
+
+
+
+
+If improvements to the English language within your manuscript have  been
+requested, you should have your manuscript reviewed by someone  who is
+fluent in English. If you would like professional help in  revising this
+manuscript, you can use any reputable English language  editing service. We
+can recommend our affiliates Nature Research  Editing Service (
+http://bit.ly/NRES-PS) and American Journal Experts  (
+http://bit.ly/AJE_PS) for help with English usage. Please note that  use
+of an editing service is neither a requirement nor a guarantee  of
+publication. Free assistance is available from our English  language
+tutorial  (https://www.springer.com/gb/authors-editors/authorandreview
+ertutorials/writinginenglish) and our Writing resources (
+http://www.biomedcentral.com/getpublished/writing-resources). These
+cover common mistakes that occur when writing in  English.
